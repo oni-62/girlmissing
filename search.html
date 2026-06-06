@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>搜索结果 - 悦己医美</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
+body{background:#f7f8fa;color:#333;}
+
+/* 顶部导航（只留 LOGO + 搜索） */
+.header{width:100%;height:70px;background:#fff;border-bottom:1px solid #eee;position:fixed;top:0;left:0;z-index:999;}
+.nav{max-width:1100px;margin:0 auto;height:70px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:24px;font-weight:bold;color:#ff5a7d;}
+
+/* 搜索框 */
+.search{display:flex;align-items:center;}
+.search input{width:180px;height:34px;padding:0 10px;border:1px solid #ddd;border-radius:4px 0 0 4px;outline:none;}
+.search button{height:34px;padding:0 14px;background:#ff5a7d;color:#fff;border:none;border-radius:0 4px 4px 0;cursor:pointer;}
+
+/* 内容区域 */
+.container{
+    max-width:1100px;
+    margin:120px auto 50px;
+    background:#fff;
+    padding:50px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+.container h2{
+    font-size:26px;
+    color:#333;
+    margin-bottom:30px;
+    padding-bottom:15px;
+    border-bottom:1px solid #f0f0f0;
+}
+
+/* 搜索结果样式 靠左 */
+.result-item{
+    text-align:left;
+    font-size:16px;
+    margin:10px 0;
+}
+.result-item a{
+    color:#ff5a7d;
+    text-decoration:none;
+    font-weight:bold;
+}
+.result-item a:hover{
+    text-decoration:underline;
+}
+
+/* 无结果样式 黑色 */
+.no-result{
+    text-align:left;
+    padding:20px 0;
+    color:#000;
+    font-size:16px;
+}
+
+/* 返回按钮 */
+.back-bar{
+    margin-top:30px;
+    text-align:left;
+}
+.back-bar a{
+    color:#999;
+    text-decoration:none;
+    font-size:15px;
+}
+.back-bar a:hover{
+    color:#ff5a7d;
+}
+
+/* 页脚 */
+.footer{background:#2b2b2b;color:#fff;padding:30px 0;text-align:center;margin-top:60px;}
+.footer p{color:#aaa;font-size:13px;margin-bottom:8px;}
+</style>
+</head>
+
+<body>
+
+<!-- 只保留 LOGO + 搜索框 -->
+<div class="header">
+    <div class="nav">
+        <div class="logo">悦己医美</div>
+        <div class="search">
+            <input id="searchName" placeholder="搜索项目、医生、医院">
+            <button onclick="searchPatient()">搜索</button>
+        </div>
+    </div>
+</div>
+
+<!-- 搜索结果内容 -->
+<div class="container">
+    <h2>搜索结果</h2>
+    <div id="result"></div>
+    <div class="back-bar">
+        <a href="index.html">← 返回首页</a>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+    <p>悦己医疗美容 ©2008-2025 版权所有</p>
+    <p>门店地址：石嘉市桥西区建国路889号医美大楼</p>
+    <p>咨询热线：400-888-9999</p>
+</div>
+
+<script>
+// 获取搜索关键词
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('name');
+
+// 配置姓名 → 档案页面
+const data = {
+    "丁美竹": "dingmeizhu.html",
+    "陈雨欣": "file.html"
+};
+
+const res = document.getElementById("result");
+
+// 显示结果（简洁靠左、点击文字跳转）
+if(data[name]){
+    res.innerHTML = `
+    <div class="result-item">
+        <a href="${data[name]}">${name}的档案</a>
+    </div>`;
+} else {
+    res.innerHTML = `<div class="no-result">未搜索到相关网页</div>`;
+}
+
+// 搜索功能
+function searchPatient(){
+    let key = document.getElementById("searchName").value.trim();
+    if(key == ""){
+        alert("请输入内容");
+        return;
+    }
+    location.href = "search.html?name=" + encodeURIComponent(key);
+}
+</script>
+
+</body>
+</html>

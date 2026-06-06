@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医师团队 - 悦己医美</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
+body{background:#f7f8fa;color:#333;}
+.header{width:100%;height:70px;background:#fff;border-bottom:1px solid #eee;position:fixed;top:0;left:0;z-index:999;}
+.nav{max-width:1100px;margin:0 auto;height:70px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:24px;font-weight:bold;color:#ff5a7d;}
+.nav-list{display:flex;list-style:none;gap:30px;}
+.nav-list a{text-decoration:none;color:#333;font-size:15px;}
+.nav-list a:hover{color:#ff5a7d;}
+.search{display:flex;align-items:center;}
+.search input{width:180px;height:34px;padding:0 10px;border:1px solid #ddd;border-radius:4px 0 0 4px;outline:none;}
+.search button{height:34px;padding:0 14px;background:#ff5a7d;color:#fff;border:none;border-radius:0 4px 4px 0;cursor:pointer;}
+.container{max-width:1100px;margin:100px auto 40px;}
+.title{font-size:22px;margin-bottom:20px;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;}
+.doc{background:#fff;border-radius:10px;overflow:hidden;text-align:center;}
+.doc img{width:100%;height:240px;object-fit:cover;}
+.doc .info{padding:15px;}
+.doc h3{color:#333;margin-bottom:5px;}
+.doc p{color:#666;font-size:14px;}
+.footer{background:#2b2b2b;color:#fff;padding:30px 0;text-align:center;margin-top:60px;}
+.footer p{color:#aaa;font-size:13px;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="nav">
+        <div class="logo">悦己医美</div>
+        <ul class="nav-list">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="project.html">医美项目</a></li>
+            <li><a href="doctor.html">医师团队</a></li>
+            <li><a href="intro.html">医院简介</a></li>
+            <li><a href="book.html">在线预约</a></li>
+        </ul>
+        <div class="search">
+            <input placeholder="搜索项目、医生、医院">
+            <button>搜索</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="title">专业医师团队</div>
+    <div class="grid">
+        <div class="doc">
+            <img src="https://img.soyoung.com/image/20250304/1741158776_7156.jpg">
+            <div class="info">
+                <h3>张雅 医师</h3>
+                <p>皮肤科主诊医师 | 光电抗衰专家</p>
+            </div>
+        </div>
+        <div class="doc">
+            <img src="https://img.soyoung.com/image/20250304/1741158776_7156.jpg">
+            <div class="info">
+                <h3>李诚 医师</h3>
+                <p>微创整形 | 注射塑形专家</p>
+            </div>
+        </div>
+        <div class="doc">
+            <img src="https://img.soyoung.com/image/20250304/1741158776_7156.jpg">
+            <div class="info">
+                <h3>王曼 医师</h3>
+                <p>问题肌修护 | 敏感肌管理</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>悦己医疗美容 ©2008-2025 版权所有</p>
+    <p>门店地址：石嘉市桥西区建国路889号医美大楼</p>
+    <p>咨询热线：400-888-9999</p>
+</div>
+</body>
+</html>

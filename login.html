@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>员工登录 - 医美档案系统</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
+body{background:#f8f4f5;height:100vh;display:flex;align-items:center;justify-content:center;}
+
+.login-wrap{width:400px;background:#fff;border-radius:18px;padding:45px 35px;box-shadow:0 5px 20px #00000010;}
+.login-wrap h2{text-align:center;color:#ff5a7d;margin-bottom:30px;}
+
+.input-box{margin-bottom:20px;}
+.input-box input{width:100%;height:45px;border:1px solid #ddd;border-radius:8px;padding:0 15px;font-size:15px;outline:none;}
+.input-box input:focus{border-color:#ff5a7d;}
+
+/* 密码提示样式 */
+.pwd-tip{
+    font-size:12px;
+    color:#888;
+    margin-top:4px;
+    padding-left:5px;
+    line-height:1.4;
+}
+
+.sub-btn{width:100%;height:46px;background:#ff5a7d;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;}
+.tip{text-align:center;margin-top:20px;font-size:14px;color:#777;}
+.tip a{color:#ff5a7d;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<div class="login-wrap">
+    <h2>员工登录</h2>
+    <div class="input-box">
+        <input type="text" id="user" placeholder="请输入员工工号">
+    </div>
+
+    <div class="input-box">
+        <input type="password" id="pwd" placeholder="请输入登录密码">
+        <!-- 你要的密码提示文字 已设置 -->
+        <div class="pwd-tip">医生初始密码为：DR+姓名缩写<br>护士初始密码为：Nur+姓名缩写</div>
+    </div>
+
+    <button class="sub-btn" onclick="login()">立即登录</button>
+    <div class="tip">
+        <a href="index.html">← 返回首页</a>
+    </div>
+</div>
+
+<script>
+// ====================== 多员工账号列表（可自己增删改）======================
+const staffList = [
+    { account: "YJ01112", password: "Drdwx", name: "戴文轩医生" },
+    { account: "YJ01109", password: "Nurlzw", name: "刘庄薇护士" },
+    { account: "YJ00602", password: "dpl0414", name: "许兆医生" },
+];
+
+function login(){
+    let user = document.getElementById("user").value.trim();
+    let pwd = document.getElementById("pwd").value.trim();
+
+    if(user === ""){
+        alert("请填写登录账号！");
+        return;
+    }
+    if(pwd === ""){
+        alert("请填写登录密码！");
+        return;
+    }
+
+    let currentStaff = staffList.find(item => item.account === user && item.password === pwd);
+    if(currentStaff){
+        localStorage.setItem("loginUser", JSON.stringify(currentStaff));
+        alert("登录成功！欢迎："+currentStaff.name);
+        window.location.href = "file.html";
+    }else{
+        alert("账号或密码错误！");
+    }
+}
+</script>
+</body>
+</html>

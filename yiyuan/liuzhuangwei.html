@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘庄薇 - 执业护士档案 | 悦己医美官方档案</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Microsoft YaHei",sans-serif;
+}
+.header{
+    width:100%;
+    height:70px;
+    background:#1f4b82;
+    border-bottom:1px solid #16365e;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999;
+}
+.nav{
+    max-width:1100px;
+    margin:0 auto;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#ffffff;
+}
+.search{
+    display:flex;
+    align-items:center;
+}
+.search input{
+    width:180px;
+    height:34px;
+    padding:0 10px;
+    border:1px solid #bcd0e8;
+    outline:none;
+    border-radius:4px 0 0 4px;
+    background:#fff;
+}
+.search button{
+    height:34px;
+    padding:0 14px;
+    background:#326cb9;
+    color:#fff;
+    border:none;
+    border-radius:0 4px 4px 0;
+    cursor:pointer;
+}
+body{
+    background:#e8f0fa;
+    padding:100px 15px 40px;
+    color:#223344;
+}
+.resume-box{
+    max-width:960px;
+    margin:0 auto;
+    background:#ffffff;
+    display:flex;
+    box-shadow:0 2px 12px rgba(20,55,95,0.12);
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #d1e1f5;
+}
+.left-side{
+    width:30%;
+    background:#f0f6fd;
+    padding:40px 20px;
+    text-align:center;
+}
+.user-img{
+    width:180px;
+    height:220px;
+    border-radius:8px;
+    object-fit:cover;
+    border:2px solid #c9dcf3;
+    margin-bottom:25px;
+}
+.status-dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:#28c740;
+    border-radius:50%;
+    margin-left:6px;
+}
+.right-main{
+    width:70%;
+    padding:40px;
+}
+.top-back{
+    text-align:right;
+    margin-bottom:15px;
+}
+.top-back a{
+    color:#446699;
+    text-decoration:none;
+    font-size:14px;
+}
+.top-back a:hover{
+    color:#27589c;
+}
+h1{
+    text-align:center;
+    font-size:24px;
+    color:#1f3b61;
+    padding-bottom:12px;
+    border-bottom:2px solid #d6e3f5;
+    margin-bottom:30px;
+}
+.title-block{
+    font-size:17px;
+    color:#1f3b61;
+    border-left:4px solid #326cb9;
+    padding-left:12px;
+    margin:28px 0 15px;
+}
+.text-content{
+    font-size:15px;
+    line-height:1.9;
+    color:#445566;
+    text-indent:2em;
+}
+.base-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:15px;
+}
+.base-table td{
+    border:1px solid #d1e1f5;
+    padding:13px 15px;
+    font-size:15px;
+    vertical-align:middle;
+    color:#445566;
+    background:#fafcff;
+}
+.base-table td strong{
+    color:#1f3b61;
+    font-weight:bold;
+    margin-right:12px;
+}
+.info-block{
+    margin-bottom:30px;
+}
+.info-block h3{
+    font-size:17px;
+    color:#1f3b61;
+    border-left:4px solid #326cb9;
+    padding-left:12px;
+    margin-bottom:15px;
+}
+.info-block p{
+    font-size:15px;
+    line-height:2.2;
+    color:#334455;
+}
+.info-block p strong{
+    color:#1f3b61;
+    display:inline-block;
+    width:120px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="nav">
+        <div class="logo">悦己医美</div>
+        <div class="search">
+            <input id="searchName" placeholder="搜索项目、医护、医院">
+            <button onclick="searchPatient()">搜索</button>
+        </div>
+    </div>
+</div>
+
+<div class="resume-box">
+    <div class="left-side">
+        <img class="user-img" src="images/liuzhuangwei.jpg" alt="刘庄薇护士照片">
+        <p>在岗状态：在岗中<span class="status-dot"></span></p>
+    </div>
+
+    <div class="right-main">
+        <div class="top-back">
+            <a href="index.html">← 返回首页</a>
+        </div>
+        <h1>护理人员执业公开档案</h1>
+
+        <div class="info-block">
+            <h3>基础个人信息</h3>
+            <p><strong>姓名：</strong>刘庄薇</p>
+            <p><strong>岗位职称：</strong>持证执业护士</p>
+            <p><strong>从业年限：</strong>6年</p>
+            <p><strong>擅长工作：</strong>术前皮肤消杀、注射配台、术后创面护理、输液监护</p>
+        </div>
+
+        <h3 class="title-block">一、执业资质详情</h3>
+        <table class="base-table">
+            <tr>
+                <td><strong>执业类别</strong> 护理</td>
+                <td><strong>毕业院校</strong> 专科护理专业院校</td>
+            </tr>
+            <tr>
+                <td><strong>执业范围</strong> 临床护理、医美专科护理</td>
+                <td><strong>执业机构</strong> 悦己医疗美容有限责任医院</td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>工号</strong> YJ01109</td>
+            </tr>
+        </table>
+
+        <h3 class="title-block">二、从业工作简介</h3>
+        <div class="text-content">
+        刘庄薇具备正规护士执业资格，细心稳重、无菌操作规范严格，长期配合整形医师开展术前准备、术中配合与术后护理工作。对待求美者耐心细致，擅长安抚术前紧张情绪，术后跟进伤口恢复、换药与叮嘱养护事项，院内护理口碑稳定可靠。日常严格遵守医美院感规范，定期参与护理技能考核与医美安全培训。
+        </div>
+
+        <h3 class="title-block">三、核心护理业务能力</h3>
+        <div class="text-content">
+        熟练操作面部术前清洁消毒、敷麻管控、注射手术全程配台、脂肪填充术后加压包扎、微创伤口换药、消炎输液监护；熟悉各类医美项目术后并发症基础观察，出现异常可第一时间上报主诊医师，配合应急处理流程。长期配合<strong>戴文轩</strong>医师完成各类整形手术护理配套工作。
+        </div>
+
+        <h3 class="title-block">四、院内日常工作记录</h3>
+        <div class="text-content">
+        全年配合手术数百台，常规负责门诊面诊接待、术前体检核对。有需求时
+        </div>
+
+        <h3 class="title-block">五、离岗休假备注</h3>
+        <div class="text-content">
+        与<strong>戴文轩</strong>医师同步休婚假，二人假期时间一致，休假期间所有护理对接工作已交接给备用值班护士，预约手术护理排班全部重新调配，假期结束返岗时间统一另行通知。
+        </div>
+
+    </div>
+</div>
+
+<script>
+// 搜索功能
+function searchPatient(){
+    let key = document.getElementById("searchName").value.trim();
+    if(key == ""){
+        alert("请输入内容");
+        return;
+    }
+    location.href = "search.html?name=" + encodeURIComponent(key);
+}
+
+// 回车快速搜索
+document.getElementById("searchName").addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+        searchPatient();
+    }
+});
+</script>
+<!--底部页码-->
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(10/36)
+</div>
+</body>
+</html>

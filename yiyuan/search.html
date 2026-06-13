@@ -6,7 +6,7 @@
 <title>搜索结果 - 悦己医美</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
-body{background:#f7f8fa;color:#333;}
+body{background:#f7f8fa;color:#333;padding-bottom:100px;}
 
 /* 顶部导航（只留 LOGO + 搜索） */
 .header{width:100%;height:70px;background:#fff;border-bottom:1px solid #eee;position:fixed;top:0;left:0;z-index:999;}
@@ -72,8 +72,16 @@ body{background:#f7f8fa;color:#333;}
     color:#ff5a7d;
 }
 
-/* 页脚 */
-.footer{background:#2b2b2b;color:#fff;padding:30px 0;text-align:center;margin-top:60px;}
+/* 页脚固定底部 */
+.footer{
+    background:#2b2b2b;
+    color:#fff;
+    padding:30px 0;
+    text-align:center;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
 .footer p{color:#aaa;font-size:13px;margin-bottom:8px;}
 </style>
 </head>
@@ -100,9 +108,9 @@ body{background:#f7f8fa;color:#333;}
     </div>
 </div>
 
-<!-- 页脚 -->
+<!-- 固定页脚 -->
 <div class="footer">
-    <p>悦己医疗美容 ©2008-2025 版权所有</p>
+    <p>悦己医疗美容 ©2008-2026 版权所有</p>
     <p>门店地址：石嘉市桥西区建国路889号医美大楼</p>
     <p>咨询热线：400-888-9999</p>
 </div>
@@ -112,23 +120,38 @@ body{background:#f7f8fa;color:#333;}
 const urlParams = new URLSearchParams(window.location.search);
 const name = urlParams.get('name');
 
-// 配置姓名 → 档案页面
-const data = {
-    "丁美竹": "dingmeizhu.html",
-    "戴文轩": "pingjia.html"
+// 多结果数组配置
+const dataList = {
+    "丁美竹": [
+        {text:"丁美竹的档案", url:"dingmeizhu.html"},
+        {text:"私人日记 ·八", url:"riji8.html"}
+    ],
+    "戴文轩": [
+        {text:"戴文轩的档案", url:"pingjia.html"}
+    ],
+    "刘庄薇": [
+        {text:"好幸福鸭--微博", url:"liuwb.html"}
+    ],
+    "许兆": [
+        {text:"许兆医师停职整改通知", url:"tingzhi.html"}
+    ]
+    "停职": [
+        {text:"许兆医师停职整改通知", url:"tingzhi.html"}
+
 };
 
 const res = document.getElementById("result");
 
-// 显示结果（简洁靠左、点击文字跳转）
-if(data[name]){
-    res.innerHTML = `
-    <div class="result-item">
-        <a href="${data[name]}">${name}的档案</a>
-    </div>`;
-} else {
-    res.innerHTML = `<div class="no-result">未搜索到相关网页</div>`;
+let htmlStr = "";
+if(dataList[name]){
+    // 循环渲染多条结果
+    dataList[name].forEach(item=>{
+        htmlStr += `<div class="result-item"><a href="${item.url}">${item.text}</a></div>`;
+    })
+}else{
+    htmlStr = `<div class="no-result">未搜索到相关网页</div>`;
 }
+res.innerHTML = htmlStr;
 
 // 搜索功能
 function searchPatient(){

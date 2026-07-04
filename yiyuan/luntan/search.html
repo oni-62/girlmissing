@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>搜索结果 - 石嘉论坛</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{width:980px;margin:0 auto;}
+
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+.search-box{display:flex;align-items:center;border:1px solid #666;background:#fff;}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+
+.user-quick{display:flex;gap:6px;align-items:center;}
+.quick-btn{
+    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
+}
+.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+.left-bbs{width:740px;}
+
+.result-block-head{
+    background:#003380;
+    color:#fff;
+    padding:12px 16px;
+    border:1px solid #99b3d6;
+    border-bottom:none;
+    font-size:16px;
+}
+.result-list{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.post-item{
+    padding:16px;border-bottom:1px dashed #cce0ff;display:flex;justify-content:space-between;
+}
+.post-item:last-child{border-bottom:none;}
+.post-content{flex:1;}
+.post-title{font-size:15px;margin-bottom:4px;font-family:"SimHei";}
+.post-title .hot-tag{color:red;font-weight:bold;margin-right:6px;}
+.post-excerpt{font-size:13px;color:#444;margin-bottom:6px;}
+.post-bottom{display:flex;gap:16px;font-size:12px;color:#666;}
+.post-tag{background:#e8f0fc;color:#003380;padding:1px 6px;border:1px solid #b3cced;font-size:12px;}
+.post-stat{text-align:center;min-width:65px;font-size:12px;color:#666;}
+.post-stat span{display:block;font-size:15px;font-weight:bold;color:#000;line-height:1.3;}
+
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+.login-row input{width:100%;height:32px;border:1px solid #666;padding:0 10px;font-size:14px;background:#fff;}
+.login-submit{
+    width:100%;height:34px;background:#003380;color:#fff;border:1px solid #001a40;cursor:pointer;font-size:14px;
+}
+.link-row{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;}
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+
+.empty-tip{padding:30px;text-align:center;font-size:16px;color:#666;}
+.hide{display:none;}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 论坛规范提醒：禁止传播邪教、暴力、低俗内容，违规账号永久封禁
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input id="searchInput" placeholder="搜索帖子、用户、关键词">
+            <button id="searchBtn">搜索</button>
+        </div>
+        <div class="user-quick">
+            <a href="#" class="quick-btn btn-login">登录</a>
+            <a href="#" class="quick-btn btn-register">注册</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <!-- 盲区事务所 两条帖子 -->
+        <div id="list-blind" class="result-wrap hide">
+            <div class="result-block-head">关键词「盲区事务所」匹配相关帖子（共2条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="detective.html">盲区事务所｜大小委托均可承接，万事皆可追查</a></div>
+                        <div class="post-excerpt">专业处理寻人及各类疑难委托</div>
+                        <div class="post-bottom">
+                            <span>事务所官方号</span>
+                            <span>2025-04-20 09:35</span>
+                            <span class="post-tag">互助问答</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1541</span>浏览 207回复</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><span class="hot-tag">【寻人】</span><a href="missing.html">紧急寻人｜我的女儿你在哪！</a></div>
+                        <div class="post-excerpt">我的女儿已经失踪三天了，警察也无能为力，囡囡你在哪。</div>
+                        <div class="post-bottom">
+                            <span>我爱我家</span>
+                            <span>2026-05-13 15:10</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>963</span>浏览 18回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 圣容会帖子 -->
+        <div id="list-shengrong" class="result-wrap hide">
+            <div class="result-block-head">关键词「圣容教/圣容会」匹配相关帖子（共2条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="yujing.html">【警民共建】圣容会与城区派出所开展友好座谈交流</a></div>
+                        <div class="post-excerpt">本土公益团体圣容会联动辖区民警搭建帮扶体系，帮扶情绪郁结居民。</div>
+                        <div class="post-bottom">
+                            <span>城市资讯员</span>
+                            <span>2023-04-19 10:20</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1289</span>浏览 87回复</div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="jieshao.html">【团体介绍】圣容会 本土善意公益组织完整概况</a></div>
+                        <div class="post-excerpt">圣容会2023年1月1日由张宝钟发起，纯公益无收费。</div>
+                        <div class="post-bottom">
+                            <span>民生科普站</span>
+                            <span>2023-01-03 12:42</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1427</span>浏览 103回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 董佩兰 -->
+        <div id="list-peilan" class="result-wrap hide">
+            <div class="result-block-head">关键词「董佩兰」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><span class="hot-tag">【爆】</span><a href="dpl.html">讣告：董佩兰女士不幸离世</a></div>
+                        <div class="post-excerpt">会员董佩兰意外离世，亲友整理悼念文稿送别故人。</div>
+                        <div class="post-bottom">
+                            <span>管理员</span>
+                            <span>2026-01-02 09:00</span>
+                            <span class="post-tag">心情随笔</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>2156</span>浏览 312回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 张宝钟 -->
+        <div id="list-baozhong" class="result-wrap hide">
+            <div class="result-block-head">关键词「张宝钟」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="zhangbaozhong.html">【人物专访】公益组织发起人张宝钟个人简介</a></div>
+                        <div class="post-excerpt">圣容会创始人张宝钟多年投身心理帮扶公益事业，热心邻里互助。</div>
+                        <div class="post-bottom">
+                            <span>民生科普站</span>
+                            <span>2023-01-01 09:45</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1063</span>浏览 79回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 邹涛 -->
+        <div id="list-zoutao" class="result-wrap hide">
+            <div class="result-block-head">关键词「邹涛」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="zoutao.html">人事公告：邹涛就任城区派出所局长公告</a></div>
+                        <div class="post-excerpt">辖区新任派出所负责人公示，后续将持续推进辖区治安与邻里帮扶工作。</div>
+                        <div class="post-bottom">
+                            <span>论坛管理员</span>
+                            <span>2023-04-29 14:45</span>
+                            <span class="post-tag">城市资讯</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1822</span>浏览 136回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 上丹市 -->
+        <div id="list-shangdan" class="result-wrap hide">
+            <div class="result-block-head">关键词「上丹市」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="travel.html">上丹市短途旅游全攻略｜近郊出行打卡景点、食宿全整理</a></div>
+                        <div class="post-excerpt">两日短途出行攻略，老城、后山、静静咖啡馆打卡指南，附带后山旧案安全提醒。</div>
+                        <div class="post-bottom">
+                            <span>城市游记博主</span>
+                            <span>2026-06-20 09:12</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1489</span>浏览 213回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 静静咖啡馆 -->
+        <div id="list-cafe" class="result-wrap hide">
+            <div class="result-block-head">关键词「静静咖啡馆」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="coffee.html">【探店推荐】静静咖啡馆｜闹市一隅的温柔港湾，可预约落座、定制下午茶</a></div>
+                        <div class="post-excerpt">老城宝藏咖啡馆，线上预约座位，预约后可与店内服务员私信对接需求。</div>
+                        <div class="post-bottom">
+                            <span>探店小记</span>
+                            <span>2026-06-28 15:30</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>412</span>浏览 57回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 弥山 -->
+        <div id="list-mishan" class="result-wrap hide">
+            <div class="result-block-head">关键词「弥山」匹配相关帖子（共0条）</div>
+            <div class="result-list">
+                <div class="empty-tip">暂未发布弥山相关公开帖子，相关线索可结合上丹市后山传闻查看</div>
+            </div>
+        </div>
+
+        <!-- 沈砚舟 新增区块 -->
+        <div id="list-shenyanzhou" class="result-wrap hide">
+            <div class="result-block-head">关键词「沈砚舟」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><span class="hot-tag">【讣告】</span><a href="obituary-oldman.html">沉痛悼念沈砚舟先生</a></div>
+                        <div class="post-excerpt">沈砚舟先生不幸离世，亲友在此发布讣告。</div>
+                        <div class="post-bottom">
+                            <span>论坛管理员</span>
+                            <span>2023-01-01 06:00</span>
+                            <span class="post-tag">心情随笔</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>1752</span>浏览 246回复</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 无结果提示 -->
+        <div id="tip-empty" class="empty-tip hide">未查询到匹配的帖子内容</div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>账号登录</h3>
+            <div class="card-body login-tip">
+                <div class="login-row"><input placeholder="用户名"></div>
+                <div class="login-row"><input type="password" placeholder="密码"></div>
+                <button class="login-submit">立即登录</button>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>今日热帖排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li><div class="num one">1</div><div class="rank-text"><a href="travel.html">上丹市短途旅游全攻略</a></div></li>
+                    <li><div class="num two">2</div><div class="rank-text"><a href="coffee.html">【探店推荐】静静咖啡馆</a></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+        </div>
+    </div>
+</div>
+
+<script>
+//读取网址参数
+let url = new URL(location.href);
+let key = url.searchParams.get("key");
+
+//全部先隐藏
+document.querySelectorAll('.result-wrap').forEach(item=>item.classList.add('hide'));
+document.getElementById('tip-empty').classList.add('hide');
+
+//判断关键词匹配逻辑，新增沈砚舟分支
+if(key === "盲区事务所"){
+    document.getElementById('list-blind').classList.remove('hide');
+}else if(key === "圣容教" || key === "圣容会"){
+    document.getElementById('list-shengrong').classList.remove('hide');
+}else if(key === "董佩兰"){
+    document.getElementById('list-peilan').classList.remove('hide');
+}else if(key === "张宝钟"){
+    document.getElementById('list-baozhong').classList.remove('hide');
+}else if(key === "邹涛"){
+    document.getElementById('list-zoutao').classList.remove('hide');
+}else if(key === "上丹市"){
+    document.getElementById('list-shangdan').classList.remove('hide');
+}else if(key === "静静咖啡馆"){
+    document.getElementById('list-cafe').classList.remove('hide');
+}else if(key === "弥山"){
+    document.getElementById('list-mishan').classList.remove('hide');
+}else if(key === "沈砚舟"){
+    document.getElementById('list-shenyanzhou').classList.remove('hide');
+}else{
+    document.getElementById('tip-empty').classList.remove('hide');
+}
+
+//本页搜索框继续可用
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+searchBtn.onclick = function(){
+    let kw = searchInput.value.trim();
+    location.href = "search.html?key=" + encodeURIComponent(kw);
+}
+searchInput.onkeydown = e=>{
+    if(e.key === 'Enter') searchBtn.click();
+}
+</script>
+</body>
+</html>

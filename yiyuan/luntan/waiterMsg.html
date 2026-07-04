@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私信 - 静静咖啡馆服务员｜石嘉论坛</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 顶部公告 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+.search-box{display:flex;align-items:center;border:1px solid #666;background:#fff;}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 左侧私信主区域 */
+.left-bbs{width:740px;}
+.chat-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+    display:flex;
+    flex-direction:column;
+    height:620px;
+}
+.chat-head{
+    background:#003380;
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.chat-avatar{
+    width:40px;
+    height:40px;
+    border:1px solid #fff;
+}
+.chat-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.chat-name{
+    font-size:18px;
+    color:#fff;
+}
+
+/* 聊天记录区域 */
+.chat-content{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    background:#f8fbff;
+}
+.msg-row{
+    margin-bottom:18px;
+    display:flex;
+    gap:10px;
+}
+.msg-self{
+    flex-direction:row-reverse;
+}
+.msg-avatar{
+    width:36px;
+    height:36px;
+    flex-shrink:0;
+}
+.msg-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.msg-wrap{
+    max-width:80%;
+}
+.msg-time{
+    font-size:11px;
+    color:#999;
+    margin-bottom:4px;
+}
+.msg-text{
+    padding:8px 12px;
+    border-radius:4px;
+    font-size:14px;
+    line-height:1.7;
+}
+.msg-other .msg-text{
+    background:#e0edff;
+    border:1px solid #b3cce6;
+}
+.msg-self .msg-text{
+    background:#003399;
+    color:#fff;
+}
+
+/* 底部发送框 */
+.chat-input{
+    padding:14px 20px;
+    border-top:1px solid #cce0ff;
+}
+.chat-input textarea{
+    width:100%;
+    height:90px;
+    border:1px solid #99b3d6;
+    padding:10px;
+    resize:none;
+    font-size:14px;
+    cursor:pointer;
+}
+.send-btn{
+    margin-top:10px;
+    padding:7px 22px;
+    background:#003380;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+}
+.send-btn:hover{
+    background:#ff7700;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <form class="search-box" action="search.html" method="get">
+            <input name="key" placeholder="搜索帖子、用户、关键词" required>
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="chat-box">
+            <div class="chat-head">
+                <div class="chat-avatar">
+                    <img src="avatar.png" alt="咖啡馆服务员头像">
+                </div>
+                <div class="chat-name">对话对象：静静咖啡馆服务员</div>
+            </div>
+            <div class="chat-content" id="chatBox">
+            </div>
+            <div class="chat-input">
+                <textarea id="msgInput" placeholder="点击此处自动生成对话，再点发送"></textarea>
+                <button class="send-btn" id="sendBtn">发送私信</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li><div class="num one">1</div><div class="rank-text"><a href="travel.html">上丹市短途旅游全攻略</a></div></li>
+                    <li><div class="num two">2</div><div class="rank-text"><a href="#">入夏避蚊虫小方法</a></div></li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构社区新闻，人物、机构均无现实关联</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏剧情素材页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(25/34)
+</div>
+
+</body>
+
+<script>
+const chatBox = document.getElementById('chatBox');
+const msgInput = document.getElementById('msgInput');
+const sendBtn = document.getElementById('sendBtn');
+
+// 我方台词队列
+const userLines = [
+    "",
+    "你好，我想问一下5月10日预约名单。",
+    "我朋友那天和我约好来店里，那天我没去成但是之后又联系不上她，想确认她后来有没有到店。",
+    "是吗？具体是什么事情？"
+];
+let lineIndex = 0;
+
+// 服务员回复映射，修复语法逗号错误
+const replyMap = {
+    "": "您好！感谢您预约咱家咖啡馆，请问关于咱们家咖啡馆有什么想问的问题？",
+    "你好，我想问一下5月10日预约名单。": "5月10日吗？很久之前了，请问您问名单有什么原因？",
+    "我朋友那天和我约好来店里，那天我没去成但是之后又联系不上她，想确认她后来有没有到店。": "您的朋友是联系不上了吗？最近我们上丹市最近确实不太平。",
+    "是吗？具体是什么事情？": "我也是听其他店员讲的，据说是在我们这边总有人去了之后回不来了，不知道是因为什么呢，那个后山以前发生过案件，封了一段时间，但几年前又解封了。哎呀，和您说太多了，我发给你一张5月10日的名单。希望可以帮到您。<br><a href=\"coffee.pdf\" style=\"color:#003399;text-decoration:underline;\">5月10日预约名单PDF文件</a>"
+};
+
+// 固定聊天时间
+function getTime(){
+    return `2026-06-03 19:20`;
+}
+
+// 对方消息
+function addOtherMsg(text){
+    const html = `
+    <div class="msg-row msg-other">
+        <div class="msg-avatar">
+            <img src="avatar.png" alt="咖啡馆服务员">
+        </div>
+        <div class="msg-wrap">
+            <div class="msg-time">${getTime()}</div>
+            <div class="msg-text">${text}</div>
+        </div>
+    </div>`;
+    chatBox.insertAdjacentHTML('beforeend', html);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+// 我方消息
+function addSelfMsg(text){
+    const html = `
+    <div class="msg-row msg-self">
+        <div class="msg-wrap">
+            <div class="msg-time">${getTime()}</div>
+            <div class="msg-text">${text}</div>
+        </div>
+    </div>`;
+    chatBox.insertAdjacentHTML('beforeend', html);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// 页面加载自动弹出服务员第一条消息
+window.onload = function(){
+    setTimeout(()=>{
+        addOtherMsg("您好！感谢您预约咱家咖啡馆，请问关于咱们家咖啡馆有什么想问的问题？");
+        lineIndex = 1;
+    },300);
+}
+
+// 点击输入框填充下一句台词
+msgInput.onclick = function(){
+    if(lineIndex < userLines.length){
+        this.value = userLines[lineIndex];
+    }else{
+        this.value = "";
+        this.placeholder = "当前对话结束";
+    }
+}
+
+// 发送按钮
+sendBtn.onclick = function(){
+    const text = msgInput.value.trim();
+    if(!text) return;
+    addSelfMsg(text);
+    lineIndex++;
+    msgInput.value = "";
+    const reply = replyMap[text];
+    if(reply){
+        setTimeout(()=>{
+            addOtherMsg(reply);
+        },800);
+    }
+}
+
+// 回车发送
+msgInput.onkeydown = function(e){
+    if(e.key === "Enter" && !e.shiftKey){
+        e.preventDefault();
+        sendBtn.click();
+    }
+}
+</script>
+</html>

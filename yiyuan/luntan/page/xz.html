@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>许兆 | 个人祀录页</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei",serif;
+}
+body{
+    background: #0c0c0e;
+    box-shadow: inset 0 0 180px #2b1414;
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+.container{
+    max-width: 700px;
+    margin: 0 auto;
+}
+.head-box{
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+}
+.head-box h1{
+    color: #c9c9cc;
+    font-size: 26px;
+    letter-spacing: 6px;
+    font-weight: normal;
+}
+.head-box p{
+    color: #777;
+    font-size: 13px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+.nav-tab{
+    display: flex;
+    justify-content: center;
+    gap:12px;
+    margin-bottom: 35px;
+}
+.nav-tab a{
+    display: block;
+    width: 110px;
+    line-height: 42px;
+    text-align: center;
+    background: #18181c;
+    border: 1px solid #333;
+    color: #999;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.nav-tab a:hover{
+    border-color: #883333;
+    color: #cc9999;
+    background: #1f1414;
+}
+.nav-tab a.active{
+    color: #ddaaaa;
+    border-color: #662222;
+    background: #1e1212;
+}
+.main-card{
+    background: #141418;
+    border:1px solid #292929;
+    padding:40px;
+    border-radius: 6px;
+    box-shadow: 0 0 30px #00000080;
+}
+.wish-text{
+    color:#b8b8bc;
+    font-size:16px;
+    line-height:2.2;
+    text-indent:0;
+    text-align:center;
+}
+.motto{
+    margin:30px 0;
+    text-align:center;
+    font-size:18px;
+    color:#bb7777;
+    letter-spacing:2px;
+}
+.tip-text{
+    margin-top:40px;
+    font-size:13px;
+    color:#555;
+    text-align:right;
+    font-style:italic;
+}
+#diary,#secret{
+    display: none;
+}
+/* 日记深色独立框，不使用白底，和页面暗色调统一 */
+.diary-card{
+    background: #1a1a20;
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 4px;
+    margin-bottom: 22px;
+}
+.diary-text{
+    color:#b8b8bc;
+    line-height:2;
+    margin-bottom:16px;
+    font-size:15px;
+    text-indent:2em;
+}
+.diary-text strong{
+    color:#dd7777;
+}
+.divider-space{
+    height:10px;
+}
+.rite-table{
+    width:100%;
+    border-collapse: collapse;
+    margin-top:20px;
+    color:#b8b8bc;
+    font-size:14px;
+}
+.rite-table th,.rite-table td{
+    border:1px solid #333;
+    padding:12px 8px;
+    text-align:center;
+}
+.rite-table th{
+    color:#ddaaaa;
+    background:#1c1212;
+}
+.diary-time{
+    color:#888;
+    font-size:13px;
+    margin-bottom:10px;
+}
+/* 右下角弹窗样式 */
+.pop-box{
+    display: none;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 360px;
+    background: #141418;
+    border: 1px solid #662222;
+    border-radius: 6px;
+    padding: 28px 24px;
+    z-index: 999;
+}
+.pop-title{
+    color: #ddaaaa;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 26px;
+    letter-spacing: 1px;
+}
+.btn-wrap{
+    display: flex;
+    gap:16px;
+}
+.pop-btn{
+    flex:1;
+    height: 42px;
+    border: 1px solid #333;
+    background: #18181c;
+    color:#b9c0cc;
+    font-size:16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.pop-btn:hover{
+    border-color:#dd7777;
+    color:#ddaaaa;
+    background:#1e1212;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="head-box">
+        <h1>许 兆 · 个 人 祀 录</h1>
+        <p>弥娑所择 · 圣容承愿</p>
+    </div>
+
+    <div class="nav-tab">
+        <a data-target="wish" class="active">心愿</a>
+        <a data-target="diary">日记</a>
+        <a data-target="secret">秘仪</a>
+    </div>
+
+    <div class="main-card">
+        <div id="wish">
+            <p class="wish-text">
+            求升职加薪，美满家庭。
+            </p>
+            <div class="motto">凡尘有愿 献祭得安</div>
+        </div>
+
+        <div id="diary">
+            <!-- 第一篇日记深色独立框 -->
+            <div class="diary-card">
+                <div class="diary-text">
+                    我加入圣容会已有数月，一直只是普通志愿者，做着最普通的帮扶工作，默默无闻，从未接触过教内核心事物。我一直以为自己只是万千信徒里最平凡的那一个，直到今夜，张哥单独找到了我。
+                </div>
+                <div class="diary-text">
+                    他带我走进最深处的密室，屋内立着一个三只眼睛的女性神像：长发如墨，无束无簪，顺着肩头散落在胸前，颈间串着细小灰白骨珠；她一手轻抬作安抚手印，另一手托一只浅腹陶碗，碗底留存淡红旧印；周身不持利刃，无凶相，眉眼永远带着悲悯式的漠然，眉心竖生第三道狭长竖瞳，仿佛看透所有凡人求而不得的苦楚。
+                </div>
+                <div class="diary-text">
+                    张哥慢慢开导我，让我道出藏在心底的所想和所愿，说讲出来给弥娑听，心愿才可以完成。
+                </div>
+                <div class="diary-text">
+                    听着他的话，心里那些纠结与不安一点点淡了，我只觉得豁然通透，完全没察觉心境已然改变。脑中总萦绕一道温和女声，反复回响短短八字：<strong>凡尘有愿，献祭得安</strong>。
+                </div>
+            </div>
+
+            <div class="divider-space"></div>
+
+            <!-- 第二篇日记深色独立框 -->
+            <div class="diary-card">
+                <div class="diary-text">
+                    先后完成两次献祭，心头却依旧空落。初次我心急失度，擅自在女孩家中完成仪式，场地浊气纷乱，遭张宝钟严厉训诫，多亏他动用警民关联抹平所有痕迹。第二个姑娘本就是教内信徒，一心求死自愿赴仪。
+                </div>
+                <div class="diary-text">
+                    我又听见那道女声低语，那八字箴言在脑中循环不休。原来前两次祭品心念、场地皆有杂质，不足以承载我的心愿。弥娑示意，待第三次献祭圆满纯粹，我心中执念方能如愿了结。
+                </div>
+            </div>
+        </div>
+
+        <div id="secret">
+            <table class="rite-table">
+                <tr>
+                    <th>献祭人名</th>
+                    <th>献祭地点</th>
+                    <th>献祭时间</th>
+                    <th>仪式结果</th>
+                </tr>
+                <tr>
+                    <td>董佩兰</td>
+                    <td>独居住宅</td>
+                    <td>2025.12.30</td>
+                    <td>完成，环境杂质过重</td>
+                </tr>
+                <tr>
+                    <td>李月心</td>
+                    <td>弥山，深处圣地</td>
+                    <td>2026.02.23</td>
+                    <td>完成，祭品心念不纯</td>
+                </tr>
+                <tr>
+                    <td>张芝月</td>
+                    <td>弥山，深处圣地</td>
+                    <td>2026.05.11</td>
+                    <td>完成，祭品为上等祭品，心思单纯，无杂质，符合心愿承载的条件，可交换。</td>
+                </tr>
+                <tr>
+                    <td>丁美竹</td>
+                    <td>弥山，深处圣地</td>
+                    <td>2026.06.03</td>
+                    <td>待完成</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 右下角弹窗 -->
+<div class="pop-box" id="popDialog">
+    <div class="pop-title">是否结束调查营救丁美竹？</div>
+    <div class="btn-wrap">
+        <button class="pop-btn" id="btnStay">还需要调查</button>
+        <button class="pop-btn" id="btnGo">马上出发！</button>
+    </div>
+</div>
+
+<script>
+const navLinks = document.querySelectorAll('.nav-tab a[data-target]');
+const sections = document.querySelectorAll('#wish,#diary,#secret');
+const popDialog = document.getElementById('popDialog');
+const btnStay = document.getElementById('btnStay');
+const btnGo = document.getElementById('btnGo');
+
+// 标记三个板块是否全部浏览完成
+let viewed = {
+    wish: false,
+    diary: false,
+    secret: false
+};
+const totalTab = 3;
+let viewedCount = 0;
+
+navLinks.forEach(link=>{
+    link.onclick = function(){
+        document.querySelectorAll('.nav-tab a').forEach(a=>a.classList.remove('active'));
+        this.classList.add('active');
+        const targetId = this.getAttribute('data-target');
+        sections.forEach(s=>s.style.display = 'none');
+        document.getElementById(targetId).style.display = 'block';
+
+        // 标记当前板块已查看，只统计一次
+        if(!viewed[targetId]){
+            viewed[targetId] = true;
+            viewedCount++;
+            // 三个板块全部看完，弹出右下角弹窗
+            if(viewedCount >= totalTab){
+                popDialog.style.display = 'block';
+            }
+        }
+    }
+})
+
+// 还需要调查：仅关闭弹窗，无任何提示文字
+btnStay.onclick = function(){
+    popDialog.style.display = 'none';
+}
+// 马上出发：跳转fin1.html
+btnGo.onclick = function(){
+    location.href = 'fin1.html';
+}
+</script>
+</body>
+</html>

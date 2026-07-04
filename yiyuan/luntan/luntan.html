@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石嘉论坛 - 真实生活综合交流社区 bbs.qiriweb.cn</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 红光闪烁动画 */
+@keyframes flashRed {
+    0% { background-color: #e8ecf1; }
+    50% { background-color: #ff3333; }
+    100% { background-color: #e8ecf1; }
+}
+.flash-warning {
+    animation: flashRed 0.2s ease-in-out 6;
+}
+
+/* 顶部公告栏 古早黄底红字样式 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部主导航栏 老式深蓝粗顶栏 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+/* 规整方块导航按钮组 古早拼接块状 */
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+.nav a.active{background:#ff7700;color:#fff;border:1px solid #ffbb44;}
+
+/* 老式矩形搜索框 */
+.search-box{display:flex;align-items:center;border:1px solid #666;background:#fff;}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+
+/* 登录注册方正复古按钮 */
+.user-quick{display:flex;gap:6px;align-items:center;}
+.quick-btn{
+    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
+}
+.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
+.quick-btn:hover{background:#fff2aa;}
+
+/* 主体页面宽度压缩为老式980px */
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 左侧帖子区域 */
+.left-bbs{width:740px;}
+.block-head{
+    background:#fff;padding:12px 16px;border:1px solid #99b3d6;border-bottom:none;
+    display:flex;justify-content:space-between;align-items:center;
+}
+.block-head h2{font-size:16px;color:#003380;font-family:"SimHei";}
+.sort-bar a{font-size:13px;color:#003399;margin-left:10px;border:1px solid #cce0ff;padding:2px 6px;background:#f5f9ff;}
+.sort-bar a.active{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+
+.post-list{background:#fff;border:1px solid #99b3d6;}
+.post-item{
+    padding:16px;border-bottom:1px dashed #cce0ff;display:flex;justify-content:space-between;
+}
+.post-item:last-child{border-bottom:none;}
+.post-content{flex:1;}
+.post-title{font-size:15px;margin-bottom:4px;font-family:"SimHei";}
+.post-title .hot-tag{
+    color:red;
+    font-weight:bold;
+    margin-right:6px;
+}
+.post-excerpt{font-size:13px;color:#444;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-bottom{display:flex;gap:16px;font-size:12px;color:#666;}
+.post-tag{background:#e8f0fc;color:#003380;padding:1px 6px;border:1px solid #b3cced;font-size:12px;}
+
+.post-stat{text-align:center;min-width:65px;font-size:12px;color:#666;}
+.post-stat span{display:block;font-size:15px;font-weight:bold;color:#000;line-height:1.3;}
+
+/* 板块容器切换 */
+.box-hide{display:none;}
+
+/* 搜索结果模块样式 */
+.search-result-wrap{
+    display: none;
+    margin-bottom:20px;
+}
+.result-block-head{
+    background:#003380;
+    color:#fff;
+    padding:12px 16px;
+    border:1px solid #99b3d6;
+    border-bottom:none;
+    font-size:16px;
+}
+.result-list{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+
+/* 董佩兰讣告单独搜索结果容器 */
+.personal-result-wrap{
+    display: none;
+    margin-bottom:20px;
+}
+
+/* 右侧侧边栏卡片直角复古样式 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;position:relative;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+/* 登录输入框老式实心边框 */
+.login-tip p{font-size:13px;color:#444;margin-bottom:12px;}
+.login-row{margin-bottom:10px;}
+.login-row input{width:100%;height:32px;border:1px solid #666;padding:0 10px;font-size:14px;background:#fff;}
+.login-submit{
+    width:100%;height:34px;background:#003380;color:#fff;border:1px solid #001a40;cursor:pointer;font-size:14px;
+}
+.login-submit:hover{background:#ff7700;border-color:#cc5500;}
+.link-row{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;}
+
+/* 热帖排行 */
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+/* 板块列表 */
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 复古深蓝底边 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+    position:relative;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+.page-footer-num{
+    position:absolute;
+    right:30px;
+    bottom:24px;
+    font-size:12px;
+    color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<!-- 顶部公告 -->
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 论坛规范提醒：禁止传播邪教、暴力、低俗内容，违规账号永久封禁
+    </div>
+</div>
+
+<!-- 头部导航 -->
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="#home" class="nav-item active" data-type="home">首页</a>
+            <a href="#talk" class="nav-item" data-type="talk">生活杂谈</a>
+            <a href="#city" class="nav-item" data-type="city">城市分享</a>
+            <a href="#essay" class="nav-item" data-type="essay">心情随笔</a>
+            <a href="#ask" class="nav-item" data-type="ask">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input id="searchInput" placeholder="搜索帖子、用户、关键词">
+            <button id="searchBtn">搜索</button>
+        </div>
+        <div class="user-quick">
+            <a href="#" class="quick-btn btn-login">登录</a>
+            <a href="#" class="quick-btn btn-register">注册</a>
+        </div>
+    </div>
+</div>
+
+<!-- 主内容区域 -->
+<div class="main-wrap">
+    <div class="left-bbs">
+        <!-- 搜索结果 -->
+        <div class="search-result-wrap" id="resultBox">
+            <div class="result-block-head">关键词「圣容教」匹配相关帖子（共3条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="yujing.html">【警民共建】圣容会与城区派出所开展友好座谈交流，深化社区共治建设</a>
+                        </div>
+                        <div class="post-excerpt">本土公益团体圣容会联动辖区民警邹涛搭建帮扶体系，针对困难居民、心理郁结人群开展长期志愿疏导与生活救助，警民协同治理成效显著。</div>
+                        <div class="post-bottom">
+                            <span>城市资讯员</span>
+                            <span>2026-02-04 09:20</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>1289</span>浏览
+                        87回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="flyer.html">【公益宣传】圣容会心理疏导宣传单电子版下载</a>
+                        </div>
+                        <div class="post-excerpt">
+                            组织印制心理安抚宣传单，面向情绪低落人群免费发放，内含自我调节文字内容，附高清图片文件网盘链接，欢迎自取打印。
+                        </div>
+                        <div class="post-bottom">
+                            <span>张宝钟</span>
+                            <span>2026-04-17 11:35</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>956</span>浏览
+                        64回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="jieshao.html">【团体介绍】圣容会 本土善意公益组织完整概况</a>
+                        </div>
+                        <div class="post-excerpt">圣容会2023年由张宝钟发起，无收费项目，志愿者全部实名报备公安，主打独居老人帮扶、心理情绪疏导、邻里矛盾调解。</div>
+                        <div class="post-bottom">
+                            <span>民生科普站</span>
+                            <span>2026-05-03 16:10</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>1427</span>浏览
+                        103回复
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="personal-result-wrap" id="peilanResult">
+            <div class="result-block-head">关键词「董佩兰」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <span class="hot-tag">【爆】</span>
+                            <a href="dpl.html">讣告：董佩兰女士不幸离世</a>
+                        </div>
+                        <div class="post-excerpt">本论坛会员董佩兰于近日意外离世，亲友自发整理悼念文稿，送别故人。愿逝者安息，生者珍重。</div>
+                        <div class="post-bottom">
+                            <span>管理员</span>
+                            <span>2026-01-02 09:00</span>
+                            <span class="post-tag">心情随笔</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>2156</span>浏览
+                        312回复
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 首页热门帖子 -->
+        <div id="homeBox" class="content-box">
+            <div class="block-head">
+                <h2>热门帖子</h2>
+                <div class="sort-bar">
+                    <a href="#" class="active">置顶</a>
+                    <a href="#">热门</a>
+                    <a href="#">精华</a>
+                    <a href="#">最新</a>
+                </div>
+            </div>
+            <div class="post-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <span class="hot-tag">【爆】</span>
+                            <a href="dpl.html">讣告：<strong>董佩兰</strong>女士不幸离世</a>
+                        </div>
+                        <div class="post-excerpt">知名平面模特<strong>董佩兰</strong>于2025年12月29日意外离世，亲友自发整理悼念文稿，送别故人。愿逝者安息，生者珍重。</div>
+                        <div class="post-bottom">
+                            <span>管理员</span>
+                            <span>2026-01-02 09:00</span>
+                            <span class="post-tag">心情随笔</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>2156</span>浏览
+                        312回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">家庭绿植养护经验，新手不容易养死的花草推荐</a>
+                        </div>
+                        <div class="post-excerpt">总结了十余种好养活的室内绿植，包含浇水周期、光照要求，不用费心打理也能常年保持青翠。</div>
+                        <div class="post-bottom">
+                            <span>花木闲居</span>
+                            <span>2026-05-13 08:16</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>642</span>浏览
+                        53回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="missing.html">紧急寻人｜我的女儿你在哪！</a>
+                        </div>
+                        <div class="post-excerpt">我的女儿已经失踪三天了，警察也无能为力，囡囡你在哪.</div>
+                        <div class="post-bottom">
+                            <span>我爱我家</span>
+                            <span>2026-05-13</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>789</span>浏览
+                        36回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="post2.html">老旧小区改造前后对比，加装电梯流程与费用分摊经验</a>
+                        </div>
+                        <div class="post-excerpt">家住六层无电梯老楼，全程跟进改造协商，低楼层顾虑、补贴申请、每户出钱比例、施工工期问题详细说明。</div>
+                        <div class="post-bottom">
+                            <span>老街住户</span>
+                            <span>2026-05-11 14:09</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>816</span>浏览
+                        72回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="post3.html">零基础自学硬笔书法，三个月练字进度与字帖选择心得</a>
+                        </div>
+                        <div class="post-excerpt">平时打字太多字迹潦草，下班抽一小时练字，避开网红劣质字帖，分享控笔、偏旁结构、日常摘抄练习方案。</div>
+                        <div class="post-bottom">
+                            <span>墨浅书安</span>
+                            <span>2026-05-12 10:25</span>
+                            <span class="post-tag">心情随笔</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>539</span>浏览
+                        41回复
+                    </div>
+                </div>
+                <!--新增无关帖子-->
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">夏季猫咪驱虫教程，内外驱虫时间安排</a>
+                        </div>
+                        <div class="post-excerpt">室外蚊虫增多，分享家用驱虫药选购方法，避免宠物皮肤过敏，新手养猫可以参考。</div>
+                        <div class="post-bottom">
+                            <span>养猫人士</span>
+                            <span>2026-05-12 15:40</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>496</span>浏览
+                        35回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">中小学暑期课外兴趣班避雷指南</a>
+                        </div>
+                        <div class="post-excerpt">对比多家培训机构收费，讲解如何区分正规机构与无证辅导班，避免家长花冤枉钱。</div>
+                        <div class="post-bottom">
+                            <span>学生家长</span>
+                            <span>2026-05-11 21:12</span>
+                            <span class="post-tag">互助问答</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>612</span>浏览
+                        60回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">家用空调清洗步骤，不用上门师傅自己动手</a>
+                        </div>
+                        <div class="post-excerpt">拆解滤网、清理蒸发器灰尘，附上清洁剂选购方案，半小时就能搞定，省下百元服务费。</div>
+                        <div class="post-bottom">
+                            <span>居家能手</span>
+                            <span>2026-03-12 16:22</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>553</span>浏览
+                        44回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">短途自驾游路线推荐，周边小众乡村路线分享</a>
+                        </div>
+                        <div class="post-excerpt">避开热门景区，沿路山水风景优美，农家乐物价实惠，两天一夜行程规划完整。</div>
+                        <div class="post-bottom">
+                            <span>旅途过客</span>
+                            <span>2026-02-10 20:05</span>
+                            <span class="post-tag">互助问答</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>577</span>浏览
+                        47回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">家常红烧肉做法，肥而不腻的关键技巧</a>
+                        </div>
+                        <div class="post-excerpt">焯水、炒糖色、小火慢炖的完整步骤，肉质软糯入味，适合家庭日常聚餐。</div>
+                        <div class="post-bottom">
+                            <span>烟火食客</span>
+                            <span>2026-05-09 12:33</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>688</span>浏览
+                        59回复
+                    </div>
+                </div>
+                <!--更多无关水帖-->
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">性价比高的家用电动车选购心得</a>
+                        </div>
+                        <div class="post-excerpt">对比多款两轮电动车续航、刹车与质保，适合日常买菜短途出行。</div>
+                        <div class="post-bottom">
+                            <span>骑行爱好者</span>
+                            <span>2026-05-08 10:15</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>432</span>浏览
+                        29回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href="#">雨天车窗起雾解决办法，不用开冷风</a>
+                        </div>
+                        <div class="post-excerpt">分享几个简单小妙招，快速去除车内雾气，雨天开车视野更清晰。</div>
+                        <div class="post-bottom">
+                            <span>老司机</span>
+                            <span>2026-05-07 19:36</span>
+                            <span class="post-tag">生活杂谈</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>407</span>浏览
+                        22回复
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 生活杂谈 -->
+        <div id="talkBox" class="content-box box-hide">
+            <div class="block-head">
+                <h2>生活杂谈</h2>
+            </div>
+            <div class="post-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">阳台蔬菜栽种技巧</a></div>
+                        <div class="post-excerpt">新手在家就能种青菜小葱，收成稳定。</div>
+                        <div class="post-bottom">
+                            <span>烟火人家</span>
+                            <span>2026-04-25</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>366</span>浏览
+                        18回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">夏季空调省电小妙招</a></div>
+                        <div class="post-excerpt">合理调节温度，做好门窗密封，每月能省下不少电费。</div>
+                        <div class="post-bottom">
+                            <span>居家达人</span>
+                            <span>2026-03-15</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>412</span>浏览
+                        26回复
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">自制水果酵素失败原因总结</a></div>
+                        <div class="post-excerpt">防止液体发霉变质，把控好温度与密封条件。</div>
+                        <div class="post-bottom">
+                            <span>美食爱好者</span>
+                            <span>2026-05-21</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>298</span>浏览
+                        12回复
+                    </div>
+                </div>
+                <!--少女失踪帖子（6月最新）-->
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="miss.html">我的女儿，你在哪里啊！</a></div>
+                        <div class="post-excerpt">我的女儿已经失踪一个月了，警察也无能为力，囡囡你在哪。</div>
+                        <div class="post-bottom">
+                            <span>我爱我家</span>
+                            <span>2026-05-20</span>
+                        </div>
+                    </div>
+                    <div class="post-stat">
+                        <span>832</span>浏览
+                        49回复
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 城市分享 -->
+        <div id="cityBox" class="content-box box-hide">
+            <div class="block-head">
+                <h2>城市分享</h2>
+            </div>
+            <div class="post-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">城区公共停车场位置汇总</a></div>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">城区新开便民菜市场地址</a></div>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">城区图书馆开放时间与借阅规则</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 心情随笔 -->
+        <div id="essayBox" class="content-box box-hide">
+            <div class="block-head">
+                <h2>心情随笔</h2>
+            </div>
+            <div class="post-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">深夜随笔，平凡日子里的小温暖</a></div>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">看完电影有感，平凡人的生活也闪闪发光</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 互助问答 -->
+        <div id="askBox" class="content-box box-hide">
+            <div class="block-head">
+                <h2>互助问答</h2>
+            </div>
+            <div class="post-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">孩子小学课后托管哪家靠谱？</a></div>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="#">家用净水器滤芯多久更换一次？</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧侧边栏 -->
+    <div class="right-side">
+        <div class="side-card">
+            <h3>账号登录</h3>
+            <div class="card-body login-tip">
+                <p>登录后可发帖、评论、收藏、私信好友</p>
+                <div class="login-row">
+                    <input placeholder="用户名">
+                </div>
+                <div class="login-row">
+                    <input type="password" placeholder="密码">
+                </div>
+                <button class="login-submit">立即登录</button>
+                <div class="link-row">
+                    <a href="#">忘记密码？</a>
+                    <a href="#">注册新账号</a>
+                </div>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>今日热帖排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="#">老小区加装电梯完整流程详解</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">老城早餐铺测评，本地人常去老店</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">夏季城区免费乘凉公园盘点</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">4</div>
+                        <div class="rank-text"><a href="#">猫粮选购避坑指南</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">5</div>
+                        <div class="rank-text"><a href="#">手机流量省钱套餐推荐</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                    <li><a href="#">互助问答</a><span class="board-count">6109帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>综合生活交流社区，理性分享、友善交流</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 版权所有 | 网络内容规范自律平台
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(15/34)
+</div>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const bodyDom = document.body;
+
+const navItems = document.querySelectorAll('.nav-item');
+const boxList = document.querySelectorAll('.content-box');
+
+navItems.forEach(item=>{
+    item.onclick = function(e){
+        e.preventDefault();
+        navItems.forEach(n=>n.classList.remove('active'));
+        this.classList.add('active');
+        let type = this.dataset.type;
+        boxList.forEach(box=>box.classList.add('box-hide'));
+        document.getElementById(type + "Box").classList.remove('box-hide');
+    }
+})
+
+function triggerFlash(){
+    // 触发红光闪烁
+    bodyDom.classList.add('flash-warning');
+    // 动画结束移除类名，防止重复叠加
+    setTimeout(()=>{
+        bodyDom.classList.remove('flash-warning');
+    }, 1200);
+}
+
+function startSearch(){
+    let keyword = searchInput.value.trim();
+    if(keyword == "") return;
+    // 判断包含关键词弥娑
+    if(keyword.includes("弥娑")){
+        triggerFlash();
+        return; // 阻断搜索跳转
+    }
+    location.href = "search.html?key=" + encodeURIComponent(keyword);
+}
+
+// 输入实时监测，输入包含弥娑立刻闪烁
+searchInput.addEventListener('input', function(){
+    const val = this.value.trim();
+    if(val.includes("弥娑")){
+        triggerFlash();
+    }
+})
+
+searchBtn.addEventListener('click', startSearch);
+searchInput.addEventListener('keydown',function(e){
+    if(e.key === 'Enter') startSearch();
+})
+</script>
+</body>
+</html>

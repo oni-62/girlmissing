@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>档案记录｜弥山献祭事件 结局二</title>
+<style>
+/* 剧情页样式 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+}
+.story-page{
+    background: #0f1114;
+    background-image: linear-gradient(rgba(20,22,28,0.92),rgba(10,12,16,0.95)),url("images/grey-texture.png");
+    min-height: 100vh;
+    padding: 60px 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.wrap{
+    max-width: 720px;
+    text-align: center;
+}
+/* 平滑切换动画 */
+.record-block{
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.4s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.record-block.show{
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    pointer-events: auto;
+}
+.record-text{
+    color: #b9c0cc;
+    font-size: 22px;
+    line-height: 2.1;
+    text-indent: 2em;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+.mark-red{
+    color: #c74747;
+}
+.tip-click{
+    margin-top: 40px;
+    color: #666;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.file-footer{
+    margin-top: 45px;
+    text-align: right;
+    font-style: italic;
+    color: #545a66;
+    font-size: 16px;
+}
+
+/* 警局通报页面样式 */
+.notice-page{
+    display: none;
+    background: #d8d8d8;
+    padding: 40px 15px;
+    font-family: SimSun, "宋体";
+    min-height: 100vh;
+    position: relative;
+}
+.archive-box{
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f0ede0;
+    border: 2px double #666666;
+    padding: 55px 65px;
+}
+.main-title{
+    font-size: 28px;
+    text-align: center;
+    color: #111111;
+    font-weight: bold;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+}
+.case-code{
+    font-size: 16px;
+    text-align: center;
+    color: #222;
+    margin-bottom: 45px;
+}
+.text-p{
+    font-size: 18px;
+    line-height: 2.3;
+    color: #1a1a1a;
+    text-indent: 2em;
+    margin-bottom: 22px;
+    text-align: justify;
+}
+.red-mark{
+    color: #b81414;
+    font-weight: bold;
+}
+.footer-sign{
+    margin-top: 70px;
+    text-align: right;
+    font-size: 17px;
+    line-height: 2;
+    color: #111;
+}
+.unlock-tip{
+    margin-top: 30px;
+    text-align: center;
+}
+.glow-text{
+    font-size: 20px;
+    color: #ff3333;
+    text-shadow: 0 0 6px #ff2222, 0 0 12px #ff4444;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 12px;
+}
+.normal-tip{
+    font-size: 19px;
+    color: #222;
+    letter-spacing: 1px;
+    display: block;
+}
+/* 全局固定右下角页码 */
+.page-tag{
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    font-size: 13px;
+    color: #777;
+    z-index: 9999;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<!-- 右下角固定 fin2 -->
+<div class="page-tag">(fin2)</div>
+
+<!-- 剧情分页页面 -->
+<div class="story-page">
+    <div class="wrap">
+        <div class="record-block show" id="p1">
+            <p class="record-text">
+            我得知丁美竹被带去弥山深处献祭，来不及多想，一边开车前去弥山，一边又通知了事务所帮我报警。到了弥山已经是夜里11点多了，山腹密室里烛火昏沉，那尊三眼女性神像静立在高台，许兆站在祭台边，手里的刀被月光反射出冷冽惨白的寒光。
+            </p>
+        </div>
+
+        <div class="record-block" id="p2">
+            <p class="record-text">
+            我不顾一切冲上前，不知哪来力气，我竟把许兆推倒在地，他的刀也掉到一边，我扯断束缚丁美竹的绳索，抬手掀翻神像前盛放旧印陶碗，散落的香灰与骨珠撒满地面，整场献祭仪式被我彻底破坏。许兆还想挥刀伤害我们，突然警车鸣笛，吓得许兆扔刀逃跑。上丹市的警方已经成功赶到了，他们掌握了弥山的上山路线以及周围可以下山的出口，进山围堵。
+            </p>
+        </div>
+
+        <div class="record-block" id="p3">
+            <p class="record-text">
+            许兆来不及辩解，当场被多名刑侦警员控制，直接带离弥山，移送警局立案调查。
+            </p>
+        </div>
+
+        <div class="record-block" id="p4">
+            <p class="record-text">
+            我扶着丁美竹一路下山，路上她和从前没有半点区别。习惯性歪头蹭我的胳膊，说话轻声细语，会提起我们约定去海边看日落的旧事，捋长发、抠衣角这些独属于她的小动作分毫未变。
+            </p>
+        </div>
+
+        <div class="record-block" id="p5">
+            <p class="record-text">
+           警察将我们搀扶上警车休整，说稍后会送我们返程归家。可无论丁美竹表现得多么安然如常，心底那股莫名的怪异与寒意始终萦绕不散。她的音色、神态、举手投足的习惯，尽数是我熟知多年的模样，可我清晰察觉，这副熟悉的皮囊之下，早已不是当初那个纯粹温柔的她。
+            </p>
+        </div>
+
+        <div class="record-block" id="p6">
+            <p class="record-text">
+            她突然将头凑近我的耳边，说：
+            </p>
+        </div>
+
+        <div class="record-block" id="p7">
+            <p class="record-text">
+            <span class="mark-red">凡尘有愿 献祭得安</span>
+            </p>
+        </div>
+
+        <div class="tip-click">点击空白处继续</div>
+    </div>
+</div>
+
+<!-- 警局通报结局页面（初始隐藏） -->
+<div class="notice-page">
+    <div class="archive-box">
+        <h1 class="main-title">上丹市公安局案件通报</h1>
+
+        <p class="text-p">
+            二〇二六年六月三日晚上11点左右，本局刑侦大队联合辖区派出所，依据石嘉市的盲区事务所举报前往弥山深处，查获一处私自搭建的非法祭祀场所，现场抓获涉案人员许兆一人，当场扣押三眼祭祀神像、金属献祭刀具、骨质祭祀摆件、手抄祭祀文稿等全部涉案物品，统一封存保管。
+        </p>
+        <p class="text-p">
+            嫌疑人许兆被带回办案区域开展讯问，讯问全程同步录音录像。审讯全程该人精神状态异常，神志恍惚，无法完整供述祭祀仪式全过程、相关参与人员、作案动机等关键案情信息，拒不配合公安人员讯问工作。
+        </p>
+        <p class="text-p">
+            其口中反复不停低声念叨一句话：<span class="red-mark">凡尘有愿，献祭得安</span>。多次向办案民警声称神明弥娑答应他，完成献祭仪式便可将她带回来，言语逻辑混乱，存在明显幻听、妄想等精神病症表现。
+        </p>
+        <p class="text-p">
+            本局依法委托具备法定资质的精神疾病司法鉴定机构，对许兆开展司法精神病鉴定。鉴定意见书明确结论，许兆患有重度妄想型精神障碍，事发当日及审讯期间均无辨认、控制自身行为之能力，依照法律规定不具备承担刑事责任条件。
+        </p>
+        <p class="text-p">
+            根据《中华人民共和国刑事诉讼法》相关条款规定，本局已将许兆移送公立精神卫生医疗机构，实施长期强制收治看管。因许兆精神失常，无法提供有效案件线索，本案关键证据链断裂，诸多疑点无从核实，侦查工作无法继续开展，案件作归档搁置处理，不再办理。
+        </p>
+
+        <div class="footer-sign">
+            上丹市公安局刑侦支队<br>
+            二〇二六年六月三日
+        </div>
+    </div>
+
+    <div class="unlock-tip">
+        <span class="glow-text">“您真的查明真相了吗？”</span>
+        <span class="normal-tip">恭喜你解锁：结局二</span>
+    </div>
+</div>
+
+<script>
+const blocks = Array.from(document.querySelectorAll('.record-block'));
+const storyPage = document.querySelector('.story-page');
+const noticePage = document.querySelector('.notice-page');
+let currentIndex = 0;
+let isAnimating = false;
+const total = blocks.length; //共7段
+
+document.body.onclick = function(){
+    if(isAnimating) return;
+    isAnimating = true;
+
+    blocks[currentIndex].classList.remove('show');
+
+    setTimeout(()=>{
+        currentIndex++;
+        // 全部看完切换到通报页面
+        if(currentIndex >= total){
+            storyPage.style.display = 'none';
+            noticePage.style.display = 'block';
+            isAnimating = false;
+            return;
+        }
+        blocks[currentIndex].classList.add('show');
+        setTimeout(()=>{
+            isAnimating = false;
+        },400);
+    },200);
+}
+</script>
+</body>
+</html>

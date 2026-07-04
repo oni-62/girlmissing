@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>档案记录｜弥山献祭事件 结局三</title>
+<style>
+/* 剧情页样式 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+}
+.story-page{
+    background: #0f1114;
+    background-image: linear-gradient(rgba(20,22,28,0.92),rgba(10,12,16,0.95)),url("images/grey-texture.png");
+    min-height: 100vh;
+    padding: 60px 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.wrap{
+    max-width: 720px;
+    text-align: center;
+}
+/* 平滑切换动画 */
+.record-block{
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.4s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.record-block.show{
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    pointer-events: auto;
+}
+.record-text{
+    color: #b9c0cc;
+    font-size: 22px;
+    line-height: 2.1;
+    text-indent: 2em;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+.mark-red{
+    color: #c74747;
+}
+.tip-click{
+    margin-top: 40px;
+    color: #666;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.file-footer{
+    margin-top: 45px;
+    text-align: right;
+    font-style: italic;
+    color: #545a66;
+    font-size: 16px;
+}
+
+/* 警局通报页面样式 */
+.notice-page{
+    display: none;
+    background: #d8d8d8;
+    padding: 40px 15px;
+    font-family: SimSun, "宋体";
+    min-height: 100vh;
+    position: relative;
+}
+.archive-box{
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f0ede0;
+    border: 2px double #666666;
+    padding: 55px 65px;
+}
+.main-title{
+    font-size: 28px;
+    text-align: center;
+    color: #111111;
+    font-weight: bold;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+}
+.case-code{
+    font-size: 16px;
+    text-align: center;
+    color: #222;
+    margin-bottom: 45px;
+}
+.text-p{
+    font-size: 18px;
+    line-height: 2.3;
+    color: #1a1a1a;
+    text-indent: 2em;
+    margin-bottom: 22px;
+    text-align: justify;
+}
+.red-mark{
+    color: #b81414;
+    font-weight: bold;
+}
+.footer-sign{
+    margin-top: 70px;
+    text-align: right;
+    font-size: 17px;
+    line-height: 2;
+    color: #111;
+}
+.unlock-tip{
+    margin-top: 30px;
+    text-align: center;
+}
+.glow-text{
+    font-size: 20px;
+    color: #ff3333;
+    text-shadow: 0 0 6px #ff2222, 0 0 12px #ff4444;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 12px;
+}
+.normal-tip{
+    font-size: 19px;
+    color: #222;
+    letter-spacing: 1px;
+    display: block;
+}
+/* 全局右下角固定页码 */
+.page-tag{
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    font-size: 13px;
+    color: #777;
+    z-index: 9999;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<!-- 右下角固定 fin3 -->
+<div class="page-tag">(fin3)</div>
+
+<!-- 剧情分页页面 -->
+<div class="story-page">
+    <div class="wrap">
+        <div class="record-block show" id="p1">
+            <p class="record-text">
+            我查清了从多年前延续至今的所有秘密。多年前沈砚舟因常年照顾久病的妻子，照顾期间想自己一世无病无灾、锦衣玉食，亲手将自己得病的发妻推上祭台；而张宝钟循着养父的老路，为了让自己病重的妻子康复，亲手献祭了沈砚舟，沈砚舟这辈子也没想到自己会有这出吧。随后张宝钟又创立圣容教，专挑无亲无故、无人牵挂的孤寡老人充当祭品，以他人性命填补自己无尽的欲壑。
+            </p>
+        </div>
+
+        <div class="record-block" id="p2">
+            <p class="record-text">
+            为打造一层牢不可破的官方保护伞，张宝钟锁定了野心滔天的邹涛。彼时邹涛困于警长之位寸步难行，一心觊觎所长的权柄，竟主动登门与张宝钟达成肮脏交易。二人各取所需，狼狈为奸：张宝钟借弥娑祭祀的虚妄力量，为邹涛扫清晋升路上所有阻碍；邹涛则手握警务权柄，刻意压下所有弥山失踪报案，篡改笔录、搪塞寻亲群众，将一桩桩沾满鲜血的献祭命案尽数封存归档，任由圣容教在暗处持续行凶，以无数受害者的性命，铺垫自己登顶局长的仕途。
+            </p>
+        </div>
+
+        <div class="record-block" id="p3">
+            <p class="record-text">
+            许兆为数次献祭，一是为求自身事业，二是一己情爱执念，而丁美竹，正是他敲定为实现一己情爱的祭品；戴文轩为核心成员，准备将自己刚新婚的妻子刘庄薇洗脑成为内部成员。
+            </p>
+        </div>
+
+        <div class="record-block" id="p4">
+            <p class="record-text">
+            我将这条环环相扣、浸透人命的罪恶链条，毫无保留全盘告知盲区事务所。掌握全部确凿证据后，事务所立刻联动上丹市公安总队，连夜启动专项营救抓捕行动。
+            </p>
+        </div>
+
+        <div class="record-block" id="p5">
+            <p class="record-text">
+          重重警力封锁弥山所有出入口，赶在祭祀仪式完成前突袭破败石龛，成功救下濒临绝境的丁美竹和差点被洗脑成功的刘庄薇；将执行献祭的许兆和正在洗脑的戴文轩全部当场落网，之后他们供出幕后主使张宝钟，绵延数年的祭祀链条瞬间崩断。
+            </p>
+        </div>
+
+        <div class="record-block" id="p6">
+            <p class="record-text">
+            山间萦绕数年的弥娑诅咒终于落幕，那句蛊惑无数贪念之人的箴言 “凡尘有愿，献祭得安”，从来不是神明的馈赠，只是野心、私欲编织而成，以人命为代价的致命骗局。所谓安稳，从不需要以牺牲他人换取；心无贪妄，方是真正永安。
+            </p>
+        </div>
+
+        <div class="tip-click">点击空白处继续</div>
+    </div>
+</div>
+
+<!-- 警局通报结局页面（初始隐藏） -->
+<div class="notice-page">
+    <div class="archive-box">
+        <h1 class="main-title">上丹市公安局案件通报</h1>
+
+        <p class="text-p">
+            二〇二六年六月三日晚上11点左右，本局刑侦大队联合辖区派出所，依据石嘉市盲区事务所实名举报线索，连夜突击清查弥山深处，成功捣毁隐藏山林深处的非法祭祀窝点，抓获涉案人员<strong>许兆、戴文轩</strong>二人，现场查获三眼祭祀神像、锐器献祭刀具、骨质祭祀摆件、邪教手抄文稿等全套涉案物证，全部统一封存留档。
+        </p>
+        <p class="text-p">
+            两名涉案人员全部被依法带回办案区隔离讯问，审讯全程同步录音录像。经查，许兆长期执行弥娑祭祀仪式，深度参与多起献祭筹备；戴文轩身为核心人员，一直想洗脑自己的新婚妻子入局；两人随后供出主谋：<strong>张宝钟</strong>。
+        </p>
+        <p class="text-p">
+           随后本局刑侦大队调查张宝钟创立圣容教、操控多起连环祭祀、常年掩盖命案，随后进行抓捕。而后供出石嘉市派出所所长邹涛，身居所长公职，明知罪行滔天仍主动勾结黑幕，利用职权包庇、压案、抹除线索，以民众性命铺垫个人晋升所长的仕途。
+        </p>
+        <p class="text-p">
+            审讯期间，许兆精神状态极度恍惚错乱，全程反复低声呢喃：<span class="red-mark">凡尘有愿，献祭得安</span>。其言行偏执癫狂，深陷神明妄想，声称只要完成献祭便能逆转一切，存在严重幻听、幻视、重度妄想障碍。其余三人心态清醒、认知完整，对自身参与邪教祭祀、滥用职权、包庇重罪、蓄意杀人未遂等犯罪事实供认不讳。
+        </p>
+        <p class="text-p">
+            本局依法对许兆启动司法精神病鉴定，最终结论明确：许兆患有重度妄想型精神障碍，案发期间无完全辨认与自控能力，依法不予追究刑事责任，统一移送公立精神卫生中心进行长期强制收治。张宝钟、邹涛、戴文轩三人心智正常、主观恶性明确、犯罪事实清晰、证据链条完整，完全具备刑事承担能力。
+        </p>
+ <p class="text-p">
+            至此，绵延数年的弥娑连环献祭案全貌彻底查清，还有其他核心人员全部落网。本案不再存在未知疑点与潜逃人员，侦查工作全面终结。本局依规对张宝钟、邹涛、戴文轩提请刑事拘留、移送起诉，数罪并罚从严查办，全案正式侦查终结、归档结案。
+        </p>
+
+        <div class="footer-sign">
+            上丹市公安局刑侦支队<br>
+            二〇二六年六月三日
+        </div>
+    </div>
+
+    <div class="unlock-tip">
+        <span class="glow-text">“您成功查明了真相！”</span>
+        <span class="normal-tip">恭喜你解锁：结局三</span>
+    </div>
+</div>
+
+<script>
+const blocks = Array.from(document.querySelectorAll('.record-block'));
+const storyPage = document.querySelector('.story-page');
+const noticePage = document.querySelector('.notice-page');
+let currentIndex = 0;
+let isAnimating = false;
+const total = blocks.length; //共6段
+
+document.body.onclick = function(){
+    if(isAnimating) return;
+    isAnimating = true;
+
+    blocks[currentIndex].classList.remove('show');
+
+    setTimeout(()=>{
+        currentIndex++;
+        // 全部看完切换到通报页面
+        if(currentIndex >= total){
+            storyPage.style.display = 'none';
+            noticePage.style.display = 'block';
+            isAnimating = false;
+            return;
+        }
+        blocks[currentIndex].classList.add('show');
+        setTimeout(()=>{
+            isAnimating = false;
+        },400);
+    },200);
+}
+</script>
+</body>
+</html>

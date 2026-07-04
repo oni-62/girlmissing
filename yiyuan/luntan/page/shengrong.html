@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>圣容会 - 本土公益互助团体</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",serif;}
+body{background:#ffffff;color:#333333;line-height:1.7;padding-top:160px;scroll-behavior:smooth;}
+a{color:#333333;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* 悬浮固定头部整体 */
+.fixed-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    background:#ffffff;
+    border-bottom:1px solid #eeeeee;
+}
+
+/*头部横幅 素白简约 大标题圆润字体 */
+.header-top{
+    padding:16px 0;
+    text-align:center;
+}
+.header-top h1{
+    font-size:26px;
+    letter-spacing:2px;
+    font-weight:normal;
+    font-family:"Microsoft YaHei", "黑体", sans-serif;
+}
+.header-top p{font-size:13px;color:#666666;margin-top:4px;}
+
+/*导航栏 纯白浅灰线条*/
+.nav-bar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    padding:12px 0;
+}
+.nav-bar a{
+    color:#444444;
+    font-size:15px;
+    white-space:nowrap;
+}
+.nav-bar a.active{
+    color:#222222;
+    font-weight:bold;
+}
+/* 登录注册按钮样式 */
+.nav-btn{
+    padding:5px 14px;
+    border:1px solid #cccccc;
+    border-radius:3px;
+}
+.nav-btn.register{
+    background:#f5f5f5;
+}
+.nav-btn:hover{
+    background:#eeeeee;
+    text-decoration:none;
+}
+
+/*容器整体纯白底色，删除侧边栏，主内容铺满宽度*/
+.container{
+    width:1000px;
+    margin:30px auto;
+}
+.main{
+    width:100%;
+    background:#ffffff;
+    padding:25px;
+    border:1px solid #eeeeee;
+}
+
+h2{
+    border-left:2px solid #999999;
+    padding-left:12px;
+    margin-bottom:20px;
+    font-size:20px;
+    font-weight:normal;
+}
+p{margin-bottom:14px;text-indent:2em;font-size:15px;}
+.info-line{
+    background:#f7f7f7;
+    padding:10px 15px;
+    margin:18px 0;
+    font-weight:normal;
+    text-indent:0;
+}
+
+ul{padding-left:20px;margin-bottom:15px;}
+ul li{margin-bottom:8px;color:#444;}
+
+/*图片样式*/
+.inside-img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border:1px solid #ddd;
+    margin:20px 0;
+}
+
+/*搜索高亮文字*/
+.highlight{
+    background:#fff2b3;
+}
+
+/*底部素白浅灰，相对定位承载页码*/
+footer{
+    background:#ffffff;
+    color:#666666;
+    text-align:center;
+    padding:20px 0;
+    margin-top:40px;
+    font-size:13px;
+    border-top:1px solid #eeeeee;
+    position:relative;
+}
+footer small{opacity:0.8;display:block;margin-top:6px;}
+/* 页脚右下角固定页码 */
+.page-num{
+    position:absolute;
+    right:35px;
+    bottom:20px;
+    font-size:13px;
+    color:#666;
+}
+</style>
+</head>
+<body>
+<div class="fixed-header">
+    <div class="header-top">
+        <h1>圣容会</h1>
+        <p>邻里善意 · 公益帮扶 · 心灵陪伴</p>
+    </div>
+    <div class="nav-bar">
+        <a href="#intro" class="nav-link active">团体简介</a>
+        <a href="#service" class="nav-link">组织架构与监管</a>
+        <a href="#record" class="nav-link">活动纪实</a>
+        <a href="#cooperate" class="nav-link">服务成果与警民合作</a>
+        <a href="#join" class="nav-link">志愿者报名</a>
+
+        <!-- 替换搜索框为登录、注册按钮 -->
+        <a href="login.html" class="nav-btn">登录</a>
+        <a href="register.html" class="nav-btn register">注册</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main" id="articleWrap">
+        <div id="intro" class="section">
+            <h2>团体简介</h2>
+            <img src="images/group.jpg" class="inside-img" alt="团体合影">
+            <p>圣容会创立于2023年1月3日，选这个日期是因为，由张宝钟发起组建，是本地自发成立的无偿民间公益互助团体。团体全程无收费、无盈利项目，所有物资与运营开销来自爱心人士捐赠、志愿者自筹资金。</p>
+            <p>创立初衷针对老旧小区普遍存在的独居老人无人照料、低收入家庭生活压力大、不少居民长期焦虑孤单缺少倾诉渠道等民生问题，以温柔帮扶、心态疏导、邻里和睦为核心宗旨开展志愿服务。</p>
+        </div>
+
+        <div id="service" class="section">
+            <h2>组织架构与监管</h2>
+            <img src="images/team.jpg" class="inside-img" alt="志愿小队">
+            <p>团体设总负责人一名，下设三支固定志愿小队：生活帮扶队、心灵疏导队、文明宣传队。所有志愿者全部实名登记，个人信息同步报备辖区城区派出所，全程接受警务部门监督管理，严格遵守城市管理条例开展活动。</p>
+            <ul>
+                <li>生活帮扶队：物资配送、居家保洁、代办水电采购等琐事照料</li>
+                <li>心灵疏导队：一对一情绪安抚、压力开导、心态调节沟通</li>
+                <li>文明宣传队：邻里和睦、安全防范、积极生活理念宣讲</li>
+            </ul>
+        </div>
+
+        <div id="record" class="section">
+            <h2>活动纪实</h2>
+            <img src="images/activity.jpg" class="inside-img" alt="社区志愿活动">
+            <p>每月固定开展2-3场社区入户帮扶活动，节日增设慰问专场，夏季送防暑物资、冬季发放保暖用品。日常同步开展小型心灵交流茶话会，为居民提供倾诉平台。</p>
+        </div>
+
+        <div id="cooperate" class="section">
+            <h2>服务成果与警民合作</h2>
+            <img src="images/police.jpg" class="inside-img" alt="警民座谈">
+            <p>成立三年多以来，在册稳定志愿者160人，覆盖城东、城西、城南三大老旧片区，累计开展志愿活动70余场，帮扶困难居民两千三百余人次。</p>
+            <p>圣容会与石嘉市公安局建立长期警民共建机制：公安负责治安巡查、风险排查、法治处置；圣容会承接软性民生温情服务，遇到矛盾纠纷、安全隐患第一时间同步上报民警，形成法治管控加善意帮扶的互补模式。</p>
+        </div>
+
+        <div id="join" class="section">
+            <h2>志愿者报名</h2>
+            <img src="images/signup.jpg" class="inside-img" alt="志愿者登记">
+            <p>报名无身份门槛，只要品行端正、有空闲空余时间、待人耐心友善，均可登记加入。团体内部严格规定，绝不开展收费项目、不传播极端言论，全力扎根基层做纯粹民生公益。</p>
+            <p>后续规划：暑期青少年课业陪伴、夏日防暑物资慰问、冬季暖老关怀、社区联合安全宣讲等系列长期活动。</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ©2026 圣容会 虚构游戏剧情素材
+    <small>声明：本网站为单机游戏虚构内容，无现实对应实体机构</small>
+    <!-- 页脚右下角页码 -->
+    <div class="page-num">(34/34)</div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    let scrollY = window.scrollY;
+    const scrollHeight = document.body.scrollHeight;
+    const clientHeight = window.innerHeight;
+
+    // 先清空所有高亮
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    // 判断是否滚动到页面底部，强制点亮志愿者报名
+    if (scrollY + clientHeight >= scrollHeight - 20) {
+        document.querySelector('a[href="#join"]').classList.add('active');
+        return;
+    }
+
+    // 正常区间高亮中间板块
+    sections.forEach(section => {
+        const top = section.offsetTop - 230;
+        const bottom = top + section.offsetHeight;
+        if (scrollY >= top && scrollY < bottom) {
+            document.querySelector(`a[href="#${section.id}"]`).classList.add('active');
+        }
+    })
+})
+
+// 点击导航平滑滚动
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.onclick = function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        window.scrollTo({
+            top: target.offsetTop - 220,
+            behavior: 'smooth'
+        })
+    }
+})
+
+// 搜索相关JS全部删除，无需保留
+</script>
+</body>
+</html>

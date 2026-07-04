@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紧急寻人｜我的女儿你在哪！</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 顶部公告 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #666;
+    background:#fff;
+    position:relative;
+}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+.search-tip{
+    position:absolute;
+    top:36px;
+    left:0;
+    background:#ff4444;
+    color:#fff;
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:2px;
+    display:none;
+    white-space:nowrap;
+    z-index:10;
+}
+
+.user-quick{display:flex;gap:6px;align-items:center;}
+.quick-btn{
+    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
+}
+.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
+.quick-btn:hover{background:#fff2aa;}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 左侧新闻正文区域 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+    margin-bottom:20px;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+}
+/* 竖版图片靠右浮动 */
+.img-right{
+    float:right;
+    width:160px;
+    height:260px;
+    border:1px solid #99b3d6;
+    margin:0 0 12px 15px;
+    overflow:hidden;
+}
+.img-right img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.article-body p{
+    margin-bottom:16px;
+    text-indent:2em;
+}
+
+/* 评论区样式 */
+.comment-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.comment-title{
+    padding:12px 20px;
+    background:#f0f6fc;
+    border-bottom:1px solid #cce0ff;
+    font-weight:bold;
+    font-size:15px;
+}
+.comment-item{
+    padding:15px 20px;
+    border-bottom:1px dashed #e2eaf5;
+}
+.comment-item:last-child{
+    border:none;
+}
+.comment-user{
+    color:#003399;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+.comment-time{
+    font-size:12px;
+    color:#888;
+    margin-left:10px;
+    font-weight:normal;
+}
+.comment-text{
+    font-size:14px;
+}
+.comment-input{
+    padding:15px 20px;
+    border-top:1px solid #cce0ff;
+}
+.comment-input textarea{
+    width:100%;
+    height:80px;
+    border:1px solid #99b3d6;
+    padding:10px;
+    resize:none;
+}
+.submit-btn{
+    margin-top:10px;
+    padding:6px 20px;
+    background:#003380;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.submit-btn:hover{
+    background:#ff7700;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.login-tip p{font-size:13px;color:#444;margin-bottom:15px;}
+.login-row{
+    margin-bottom:12px;
+}
+.login-row input{
+    width:100%;
+    height:34px;
+    border:1px solid #666;
+    padding:0 10px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+.login-submit{
+    width:100%;
+    height:36px;
+    background:#003380;
+    color:#fff;
+    border:1px solid #001a40;
+    cursor:pointer;font-size:14px;
+    margin-bottom:10px;
+}
+.login-submit:hover{background:#ff7700;border-color:#cc5500;}
+.link-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <!-- 增加id与解锁提示span -->
+        <form class="search-box" action="search.html" method="get" id="searchForm">
+            <input name="key" id="searchInput" placeholder="搜索帖子、用户、关键词" required>
+            <span class="search-tip" id="searchTip">关键词「上丹市」暂未解锁，请先完成对应线索对话</span>
+            <button type="submit">搜索</button>
+        </form>
+        <div class="user-quick">
+            <a href="#" class="quick-btn btn-login">登录</a>
+            <a href="#" class="quick-btn btn-register">注册</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>紧急寻人｜我的女儿你在哪！</h1>
+            </div>
+            <div class="article-meta">
+                <span>发帖人：我爱我家</span>
+                <span>发布时间：2026-05-13 15:10</span>
+                <span>板块：生活杂谈 · 寻人求助</span>
+                <span>浏览：963</span>
+            </div>
+            <div class="article-body">
+                <!-- 竖长方形图片，浮动到右上角 -->
+                <div class="img-right">
+                    <img src="tupian/zzy.png" alt="失踪女孩照片">
+                </div>
+
+                <p>我的女儿<strong>张芝月</strong>，今年二十八岁，性格安静温顺。两天前下午，她独自前往上丹市说要和她以前的朋友玩，出门前还和我通了电话，和我说过段时间回家。我当晚问她到没到，她什么也没回，我当是她太累了可能早到了没有来得及回我消息休息了。可是第二天也一直没有回复我的消息，手机始终处于无法接通的状态。</p>
+                <p>她走的急，也没跟我说去见哪个朋友玩，我真后悔没多问问。我连夜前往辖区派出所报案，民警说这个案子不在本市发生的事他们不负责。</p>
+                <p>我昨天去上丹的派出所，结果办案人员说线索太少了他们没法深挖，案件暂时搁置。</p>
+                <p>在此向全城居民求助，如果有见过我家囡囡的，或是发现可疑人员，请私信联系我！只要能够找回孩子，我愿意重金答谢。我只盼望能够平安回到家中。旁边是我囡囡的生活照片。</p>
+                <p>我的联系方式：133****6527</p>
+            </div>
+        </div>
+
+        <!-- 评论区 -->
+        <div class="comment-box">
+            <div class="comment-title">全部评论（18）</div>
+            <div class="comment-item">
+                <div class="comment-user">晚风微凉<span class="comment-time">2026-04-20 15:22</span></div>
+                <div class="comment-text">太让人揪心了，我帮你转发到邻里群里，大家一起帮帮忙。</div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-user">小城旧事<span class="comment-time">2026-04-20 15:35</span></div>
+                <div class="comment-text">最近已经发生好几起年轻人失联了，希望小姑娘平安无事。</div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-user">暖阳89<span class="comment-time">2026-04-22 10:22</span></div>
+                <div class="comment-text">我我有个朋友在上丹市居住，我让她帮帮宣传一下，一有消息马上私信阿姨。</div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-user">一叶知秋<span class="comment-time">2026-04-23 16:15</span></div>
+                <div class="comment-text">我知道一个叫<strong>盲区事务所</strong>，他们应该可以帮到你。</div>
+               <div style="margin-left:30px;margin-top:8px;padding-top:8px;border-top:#eee 1px solid;">
+                     <div class="comment-user">我爱我家（楼主）<span class="comment-time">2026-04-23 16:40</span></div>
+                      <div class="comment-text">感谢小伙子！阿姨去问问。</div>
+               </div>
+            </div>
+
+            <div class="comment-input">
+                <textarea placeholder="写下你的评论……"></textarea>
+                <button class="submit-btn">提交评论</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>账号登录</h3>
+            <div class="card-body">
+                <div class="login-tip">
+                    <p>登录后可发帖、评论、收藏、私信好友</p>
+                </div>
+                <div class="login-row">
+                    <input placeholder="用户名">
+                </div>
+                <div class="login-row">
+                    <input type="password" placeholder="密码">
+                </div>
+                <button class="login-submit">立即登录</button>
+                <div class="link-row">
+                    <a href="#">忘记密码？</a>
+                    <a href="#">注册新账号</a>
+                </div>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="#">入秋润燥养生食谱分享</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">老城菜市场秋季果蔬价格行情</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">小区秋冬绿化养护通知</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">4</div>
+                        <div class="rank-text"><a href="#">近郊秋日徒步路线推荐</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">5</div>
+                        <div class="rank-text"><a href="#">秋季家电防潮保养小技巧</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                    <li><a href="#">互助问答</a><span class="board-count">6109帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，人物、机构均无现实对应实体</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机素材专用页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(21/34)
+</div>
+
+</body>
+
+<script>
+// 读取解锁状态
+function getUnlockState(){
+    return localStorage.getItem('unlock_shangdanshi') === 'true';
+}
+const searchInput = document.getElementById('searchInput');
+const searchTip = document.getElementById('searchTip');
+const searchForm = document.getElementById('searchForm');
+
+if(searchInput && searchTip && searchForm){
+    searchInput.addEventListener('input',function(){
+        const val = this.value.trim();
+        const unlocked = getUnlockState();
+        if(val.includes('上丹市') && !unlocked){
+            searchTip.style.display = 'block';
+        }else{
+            searchTip.style.display = 'none';
+        }
+    })
+    searchForm.addEventListener('submit',function(e){
+        const val = searchInput.value.trim();
+        const unlocked = getUnlockState();
+        if(val.includes('上丹市') && !unlocked){
+            e.preventDefault();
+            searchTip.style.display = 'block';
+        }
+    })
+}
+</script>
+</html>

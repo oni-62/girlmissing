@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石嘉论坛 - 新闻详情页</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 顶部公告 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+.nav a.active{background:#ff7700;color:#fff;border:1px solid #ffbb44;}
+
+.search-box{display:flex;align-items:center;border:1px solid #666;background:#fff;}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+
+.user-quick{display:flex;gap:6px;align-items:center;}
+.quick-btn{
+    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
+}
+.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
+.quick-btn:hover{background:#fff2aa;}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 左侧新闻正文区域 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+    text-indent:2em;
+    overflow:hidden;
+}
+.article-body p{
+    margin-bottom:16px;
+}
+/* 图片浮动靠右，文字自动环绕 */
+.pic-float-right{
+    float:right;
+    width:260px;
+    height:190px;
+    background:#cccccc;
+    border:1px solid #99b3d6;
+    margin:0 0 12px 18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#666;
+    font-size:13px;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.login-tip p{font-size:13px;color:#444;margin-bottom:12px;}
+.login-row{margin-bottom:10px;}
+.login-row input{width:100%;height:32px;border:1px solid #666;padding:0 10px;font-size:14px;background:#fff;}
+.login-submit{
+    width:100%;height:34px;background:#003380;color:#fff;border:1px solid #001a40;cursor:pointer;font-size:14px;
+}
+.login-submit:hover{background:#ff7700;border-color:#cc5500;}
+.link-row{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+.page-footer-num{
+    position:absolute;
+    right:30px;
+    bottom:24px;
+    font-size:12px;
+    color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input placeholder="搜索帖子、用户、关键词">
+            <button>搜索</button>
+        </div>
+        <div class="user-quick">
+            <a href="#" class="quick-btn btn-login">登录</a>
+            <a href="#" class="quick-btn btn-register">注册</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>【警民共建】圣容会与城区派出所开展友好座谈交流，深化社区共治建设</h1>
+            </div>
+            <div class="article-meta">
+                <span>发布来源：城市新闻中心</span>
+                <span>发布时间：2023-04-19 10:20</span>
+                <span>板块：城市新闻 · 公益资讯</span>
+                <span>浏览：1289</span>
+            </div>
+            <div class="article-body">
+                <!-- 浮动占位图片，文字自动环绕 -->
+                <div class="pic-float-right">
+                    <span>活动现场实拍占位图</span>
+                    <small>圣容会公益活动现场</small>
+                </div>
+                <p>近日，我市本土民间新兴团体“圣容会”正式启动二月份常态化社区帮扶计划，本次活动覆盖城东老居民区、城西安置小区、城南老旧平房三大片区，共计组织二十名登记志愿者分组开展上门志愿服务，以善意之行温暖邻里社区。</p>
+                <p>本次帮扶分为物资派送、居家照料、心灵疏导三大板块。圣容会志愿者提前摸排片区内独居高龄老人、身患慢性病行动不便住户、低收入单亲家庭等困难群体名单，统一采购米面粮油、常用洗护、防暑药品等生活物资逐户配送。针对无人照料的老人，志愿者定时上门帮忙打扫房间、采购菜品、代缴水电费用，解决日常生活琐事难题。</p>
+                <p>圣容会长期的公益吸引了警长<strong>邹涛</strong>的关注，为夯实辖区平安基层治理体系，搭建官方管理与民间善意服务协作桥梁，警员邹涛向上级提出建议，开展警民友好共建座谈交流会，并邀请圣容会前往派出所进行交流。</p>
+                <p>座谈会现场，派出所方负责人由邹涛承担，他首先对圣容会长久扎根老旧小区、持续开展无偿帮扶工作给予充分肯定。邹涛介绍，辖区内独居老人、低收入家庭、情绪压力较大居民数量较多，刚性帮扶需求突出，圣容会在此之前已经持续了一年不间断的物资派送、上门陪伴、心态疏导志愿工作，有效弥补了基层警务温情服务的缺口，大幅降低邻里矛盾、群众消极情绪引发的各类小事纠纷。</p>
+                <p>派出所方面表示，支持辖区合规善意公益组织稳定开展活动，会常态化开放沟通渠道，同步共享辖区重点帮扶人群信息，保障志愿活动安全有序开展。圣容会承诺，全程依规开展公益行动，主动配合警务安全管理，后续联合开展社区走访、安全宣讲、节日慰问等联动活动。</p>
+                <p>圣容会表示，后续将持续推进常态化公益服务，三月将开启暑期青少年关怀专场，针对留守孩童、双职工家庭子女开展课业辅导与暖心陪伴活动，持续传递社区善意，助力打造和睦、安稳、温暖的城市人居环境。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>账号登录</h3>
+            <div class="card-body login-tip">
+                <p>登录后可发帖、评论、收藏、私信好友</p>
+                <div class="login-row">
+                    <input placeholder="用户名">
+                </div>
+                <div class="login-row">
+                    <input type="password" placeholder="密码">
+                </div>
+                <button class="login-submit">立即登录</button>
+                <div class="link-row">
+                    <a href="#">忘记密码？</a>
+                    <a href="#">注册新账号</a>
+                </div>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="#">春运返程</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">注意雨雪结冰路面湿滑</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">元宵志愿帮扶活动</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">4</div>
+                        <div class="rank-text"><a href="#">老小区加装电梯施工进度播报</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">5</div>
+                        <div class="rank-text"><a href="#">冬季居家绿植养护要点分享</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                    <li><a href="#">互助问答</a><span class="board-count">6109帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，无现实实体组织</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机素材专用页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(16/34)
+</div>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+
+function goSearch() {
+    let keyword = searchInput.value.trim();
+    if(keyword === '圣容教' || keyword === '圣容会'){
+        location.href = "index.html?key=shengrong";
+    }else if(keyword === "董佩兰"){
+        location.href = "index.html?key=dongpeilan";
+    }else if(keyword != ""){
+        alert("未查询到匹配的帖子内容");
+    }else{
+        location.href = "index.html";
+    }
+}
+
+searchBtn.onclick = goSearch;
+searchInput.onkeydown = function(e){
+    if(e.key === "Enter") goSearch();
+}
+</script>
+</body>
+</html>

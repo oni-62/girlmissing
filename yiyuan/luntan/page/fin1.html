@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>档案记录｜弥山献祭事件 结局一</title>
+<style>
+/* 剧情页样式 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+}
+.story-page{
+    background: #0f1114;
+    background-image: linear-gradient(rgba(20,22,28,0.92),rgba(10,12,16,0.95)),url("images/grey-texture.png");
+    min-height: 100vh;
+    padding: 60px 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.wrap{
+    max-width: 720px;
+    text-align: center;
+}
+/* 平滑切换动画 */
+.record-block{
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.4s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.record-block.show{
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    pointer-events: auto;
+}
+.record-text{
+    color: #b9c0cc;
+    font-size: 22px;
+    line-height: 2.1;
+    text-indent: 2em;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+.mark-red{
+    color: #c74747;
+}
+.tip-click{
+    margin-top: 40px;
+    color: #666;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.file-footer{
+    margin-top: 45px;
+    text-align: right;
+    font-style: italic;
+    color: #545a66;
+    font-size: 16px;
+}
+
+/* 警局通报页面样式 */
+.notice-page{
+    display: none;
+    background: #d8d8d8;
+    padding: 40px 15px;
+    font-family: SimSun, "宋体";
+    min-height: 100vh;
+    position: relative;
+}
+.archive-box{
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f0ede0;
+    border: 2px double #666666;
+    padding: 55px 65px;
+}
+.main-title{
+    font-size: 28px;
+    text-align: center;
+    color: #111111;
+    font-weight: bold;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+}
+.case-code{
+    font-size: 16px;
+    text-align: center;
+    color: #222;
+    margin-bottom: 45px;
+}
+.text-p{
+    font-size: 18px;
+    line-height: 2.3;
+    color: #1a1a1a;
+    text-indent: 2em;
+    margin-bottom: 22px;
+    text-align: justify;
+}
+.red-mark{
+    color: #b81414;
+    font-weight: bold;
+}
+.footer-sign{
+    margin-top: 70px;
+    text-align: right;
+    font-size: 17px;
+    line-height: 2;
+    color: #111;
+}
+.unlock-tip{
+    margin-top: 30px;
+    text-align: center;
+}
+.glow-text{
+    font-size: 20px;
+    color: #ff3333;
+    text-shadow: 0 0 6px #ff2222, 0 0 12px #ff4444;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 12px;
+}
+.normal-tip{
+    font-size: 19px;
+    color: #222;
+    letter-spacing: 1px;
+    display: block;
+}
+/* 全局右下角固定页码，两个页面共用 */
+.page-tag{
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    font-size: 13px;
+    color: #777;
+    z-index: 9999;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<!-- 右下角固定标签 fin1 -->
+<div class="page-tag">(fin1)</div>
+
+<!-- 剧情分页页面 -->
+<div class="story-page">
+    <div class="wrap">
+        <div class="record-block show" id="p1">
+            <p class="record-text">
+            我得知丁美竹被带去弥山深处献祭，来不及多想，连夜独自摸黑进山。山腹密室里烛火昏沉，那尊三眼女性神像静立在高台，许兆站在祭台边，手里的刀被月光反射出冷冽惨白的寒光。
+            </p>
+        </div>
+
+        <div class="record-block" id="p2">
+            <p class="record-text">
+            我不顾一切冲上前，不知哪来力气，我竟把许兆推倒在地，他的刀也掉到一边，我赶紧去扯断束缚丁美竹的绳索。却不知许兆已经又拿起刀，站在了我的身后。
+            </p>
+        </div>
+
+        <div class="record-block" id="p3">
+            <p class="record-text">
+            他说：
+            </p>
+        </div>
+
+        <div class="record-block" id="p4">
+            <p class="record-text">
+            <span class="mark-red">买一送一，弥娑这是在眷顾我！</span>
+            </p>
+        </div>
+
+        <div class="tip-click">点击空白处继续</div>
+    </div>
+</div>
+
+<!-- 警局通报结局页面（初始隐藏） -->
+<div class="notice-page">
+    <div class="archive-box">
+        <h1 class="main-title">上丹市公安局通报</h1>
+
+        <p class="text-p">
+             二〇二六年六月四日上午十时许，本局接到有群众报警，有两名登山客在弥山深处徒步时，发现两名女性尸体。本局刑侦大队即刻联合辖区派出所前去调查。
+             </p>
+             <p class="text-p">
+    经现场勘验，两名死者体表干净整洁，无打斗、拖拽、挣扎痕迹，现场未提取到任何指纹、足迹、毛发等凶手生物线索，周边监控全部盲区，无任何人出入记录，作案痕迹完全清零。
+             </p>
+             <p class="text-p">
+             法医尸检结果显示，两名死者致命伤统一为颈部规整锐器划开创口，死因均为急性失血性休克死亡；二人躯干皮肤均印有一枚完整的黑色衔尾蛇纹路印记，纹路深浅一致、形态规整，为外力烫印。
+             </p>
+             <p class="text-p">
+             现场同步搜查发现一处破败的石龛，留存三眼神像摆件、骨质珠串、手抄祭祀文稿等诡异器物，疑似为一场特殊祭祀仪式现场。物件均已收入警局的物证保管库内。
+             </p>
+             <p class="text-p">
+             本局全力排查社会关系、往来人员、可疑流动人员，未锁定任何犯罪嫌疑人。案件无目击证人、无有效物证、无作案动机线索，所有侦查方向全部中断，关键线索彻底断裂。
+             </p>
+             <p class="text-p">
+             因本案存在大量无法解释的诡异疑点，且无任何可推进侦查的有效证据，不具备继续侦办条件。依据刑事案件办理相关规定，本案最终作永久搁置、悬案归档处理，至今未破。最后警方敬告全体群众：
+             </p>
+             <p class="text-p" style="text-align:center; font-size:18px; margin:20px 0;">
+             <span class="red-mark">“凡尘有愿，献祭得安”
+             </p>
+             <p class="text-p" style="text-align:center; font-size:18px; margin:20px 0;">
+             <span class="red-mark">“凡尘有愿，献祭得安”
+             </p>
+             <p class="text-p" style="text-align:center; font-size:18px; margin:20px 0;">
+             <span class="red-mark">“凡尘有愿，献祭得安”
+             </p>
+
+        <div class="footer-sign">
+            上丹市公安局刑侦支队<br>
+            二〇二六年六月三日
+        </div>
+    </div>
+
+    <div class="unlock-tip">
+        <span class="glow-text">“您真的查明真相了吗？”</span>
+        <span class="normal-tip">恭喜你解锁：结局一</span>
+    </div>
+</div>
+
+<script>
+const blocks = Array.from(document.querySelectorAll('.record-block'));
+const storyPage = document.querySelector('.story-page');
+const noticePage = document.querySelector('.notice-page');
+let currentIndex = 0;
+let isAnimating = false;
+const total = blocks.length;
+
+document.body.onclick = function(){
+    if(isAnimating) return;
+    isAnimating = true;
+
+    blocks[currentIndex].classList.remove('show');
+
+    setTimeout(()=>{
+        currentIndex++;
+        // 全部看完切换到通报页面
+        if(currentIndex >= total){
+            storyPage.style.display = 'none';
+            noticePage.style.display = 'block';
+            isAnimating = false;
+            return;
+        }
+        blocks[currentIndex].classList.add('show');
+        setTimeout(()=>{
+            isAnimating = false;
+        },400);
+    },200);
+}
+</script>
+</body>
+</html>

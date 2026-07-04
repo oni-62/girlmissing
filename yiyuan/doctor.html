@@ -24,9 +24,27 @@ body{background:#f7f8fa;color:#333;min-height:100vh;display:flex;flex-direction:
 .doc .info{padding:15px;}
 .doc h3{color:#333;margin-bottom:5px;}
 .doc p{color:#666;font-size:14px;}
-.footer{background:#2b2b2b;color:#fff;padding:30px 0;text-align:center;width:100%;}
+.footer{
+    background:#2b2b2b;
+    color:#fff;
+    padding:30px 0;
+    width:100%;
+    position:relative;
+}
+.footer-inner{
+    max-width:1100px;
+    margin:0 auto;
+    text-align:center;
+}
 .footer p{color:#aaa;font-size:13px;margin-bottom:8px;}
 .footer p:last-child{margin-bottom:0;}
+.page-number{
+    position:absolute;
+    right:40px;
+    bottom:30px;
+    color:#aaa;
+    font-size:13px;
+}
 </style>
 </head>
 <body>
@@ -78,9 +96,12 @@ body{background:#f7f8fa;color:#333;min-height:100vh;display:flex;flex-direction:
 </div>
 
 <div class="footer">
-    <p>悦己医疗美容 ©2008-2025 版权所有</p>
-    <p>门店地址：石嘉市桥西区建国路889号医美大楼</p>
-    <p>咨询热线：400-888-9999</p>
+    <div class="footer-inner">
+        <p>悦己医疗美容 ©2008-2025 版权所有</p>
+        <p>门店地址：石嘉市桥西区建国路889号医美大楼</p>
+        <p>咨询热线：400-888-9999</p>
+    </div>
+    <div class="page-number">(3/34)</div>
 </div>
 
 <script>

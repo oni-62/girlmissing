@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拉皮手术专用药品申领单 | 悦己医美药房登记</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Microsoft YaHei",sans-serif;
+}
+body{
+    background:#f4f7fc;
+    padding:80px 20px 40px;
+    color:#333;
+}
+.header{
+    width:100%;
+    height:70px;
+    background:#1f4b82;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999;
+}
+.head-inner{
+    max-width:1100px;
+    margin:0 auto;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.logo{
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+}
+.search input{
+    width:180px;
+    height:34px;
+    padding:0 10px;
+    border:none;
+    border-radius:4px 0 0 4px;
+    outline:none;
+}
+.search button{
+    height:34px;
+    padding:0 14px;
+    background:#ff5a7d;
+    color:#fff;
+    border:none;
+    border-radius:0 4px 4px 0;
+    cursor:pointer;
+}
+.wrap{
+    max-width:1000px;
+    margin:0 auto;
+    background:#fff;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 2px 14px rgba(31,75,130,0.1);
+}
+h1{
+    text-align:center;
+    font-size:26px;
+    color:#1f3b61;
+    padding-bottom:15px;
+    border-bottom:2px solid #d6e3f5;
+    margin-bottom:30px;
+}
+.table-box{
+    margin:30px 0;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+th,td{
+    border:1px solid #d1e1f5;
+    padding:14px;
+    text-align:center;
+    font-size:14px;
+}
+th{
+    background:#f0f6fd;
+    color:#1f3b61;
+}
+.big-dose{
+    font-weight:bold;
+    color:#c0392b;
+    font-size:15px;
+}
+.page-num{
+    position:fixed;
+    right:25px;
+    bottom:20px;
+    font-size:14px;
+    color:#000;
+}
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="head-inner">
+        <div class="logo">悦己医美</div>
+        <div class="search">
+            <input id="searchName" placeholder="医生/药品/手术查询">
+            <button onclick="searchGo()">搜索</button>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <h1>拉皮手术专用药品申领登记表</h1>
+
+    <div class="table-box">
+        <table>
+            <tr>
+                <th>申领日期</th>
+                <th>药品名称</th>
+                <th>常规微创用量</th>
+                <th>本次手术申领剂量</th>
+                <th>规格单位</th>
+                <th>备注说明</th>
+                <th>申领护士</th>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>局部麻醉肿胀液</td>
+                <td>30ml</td>
+                <td class="big-dose">120–180ml（大剂量）</td>
+                <td>ml</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>肾上腺素稀释液</td>
+                <td>0.2mg</td>
+                <td class="big-dose">0.8–1.2mg（大剂量）</td>
+                <td>mg</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>利多卡因注射液</td>
+                <td>5ml</td>
+                <td class="big-dose">20–30ml（大剂量）</td>
+                <td>ml</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>罗哌卡因注射液</td>
+                <td>4ml</td>
+                <td class="big-dose">15–20ml（大剂量）</td>
+                <td>ml</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>术后消炎抗生素针剂</td>
+                <td>1支</td>
+                <td class="big-dose">3支（大剂量）</td>
+                <td>支</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>止血凝血药剂</td>
+                <td>1支</td>
+                <td class="big-dose">2支（大剂量）</td>
+                <td>支</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>镇痛舒缓注射液</td>
+                <td>1小支</td>
+                <td class="big-dose">2支（大剂量）</td>
+                <td>支</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>医用生理盐水冲洗液</td>
+                <td>100ml</td>
+                <td class="big-dose">500ml（大剂量）</td>
+                <td>ml</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>医用碘伏消毒液</td>
+                <td>20ml</td>
+                <td class="big-dose">80ml（大剂量）</td>
+                <td>ml</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>创面生长因子凝胶</td>
+                <td>1支</td>
+                <td class="big-dose">3支（大剂量）</td>
+                <td>支</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>消肿脱水注射药剂</td>
+                <td>1支</td>
+                <td class="big-dose">3支（大剂量）</td>
+                <td>支</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+            <tr>
+                <td>2026-06-03</td>
+                <td>抗过敏舒缓针剂</td>
+                <td>1支</td>
+                <td class="big-dose">2支（大剂量）</td>
+                <td>支</td>
+                <td>拉皮手术专用</td>
+                <td>刘庄薇</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="page-num">(12/34)</div>
+
+<script>
+function searchGo(){
+    let val = document.getElementById("searchName").value.trim();
+    if(!val){
+        alert("请输入查询内容");
+        return;
+    }
+    location.href="search.html?name="+encodeURIComponent(val);
+}
+</script>
+</body>
+</html>

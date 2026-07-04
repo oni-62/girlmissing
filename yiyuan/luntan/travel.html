@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【探店推荐】静静咖啡馆｜闹市一隅的温柔港湾，可预约落座、定制下午茶</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 红光闪烁动画 */
+@keyframes flashRed {
+    0% { background-color: #e8ecf1; }
+    50% { background-color: #ff3333; }
+    100% { background-color: #e8ecf1; }
+}
+.flash-warning {
+    animation: flashRed 0.2s ease-in-out 6;
+}
+
+/* 顶部公告栏 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;gap:10px;justify-content:space-between;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+/* 搜索框 */
+.search-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #666;
+    background:#fff;
+    position:relative;
+}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+.search-tip{
+    position:absolute;
+    top:36px;
+    left:0;
+    background:#ff4444;
+    color:#fff;
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:2px;
+    display:none;
+    white-space:nowrap;
+    z-index:10;
+}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 帖子正文模块 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+    text-indent:2em;
+}
+.article-body p{
+    margin-bottom:16px;
+}
+
+/* 预约按钮 */
+.reserve-btn{
+    display:inline-block;
+    padding:9px 26px;
+    background:#003380;
+    color:#fff;
+    border:0;
+    font-size:14px;
+    cursor:pointer;
+    margin:12px 0;
+}
+.reserve-btn:hover{
+    background:#ff7700;
+}
+
+/* 右下角服务员弹窗 */
+.waiter-popup{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:190px;
+    height:65px;
+    background:#fff;
+    border:1px solid #99b3d6;
+    box-shadow:0 3px 10px rgba(0,0,0,0.12);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:999;
+}
+.waiter-popup p{
+    color:#003380;
+    font-size:14px;
+    font-weight:bold;
+}
+.popup-show{
+    display:flex;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input id="searchInput" placeholder="搜索帖子、用户、关键词">
+            <span class="search-tip" id="searchTip">关键词「上丹市」暂未解锁，请先完成对应线索对话</span>
+            <button id="searchBtn">搜索</button>
+        </div>
+        <!-- 删除右上角登录注册div -->
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>【探店推荐】静静咖啡馆｜闹市一隅的温柔港湾，可预约落座、定制下午茶</h1>
+            </div>
+            <div class="article-meta">
+                <span>发帖板块：生活杂谈</span>
+                <span>发帖时间：2026-06-28 15:30</span>
+                <span>浏览：328</span>
+                <span>回复：46</span>
+            </div>
+            <div class="article-body">
+                <p>在城市喧嚣的街巷里，总有一处安静角落，能容纳所有疲惫与温柔。今天给大家安利一家藏在<strong>上丹市</strong>的宝藏小店——<strong>静静咖啡馆</strong>，治愈感拉满，是日常放松、独处放空、好友小聚的绝佳去处！</p>
+                <p>不同于网红咖啡店的喧闹嘈杂，静静咖啡馆主打静谧舒适的氛围。原木风的装修搭配暖黄色灯光，落地窗边摆放着绿植与布艺沙发，桌椅间距宽松，不会有拥挤压迫感。午后阳光透过玻璃窗洒落，配上一杯醇香咖啡，随手一拍都是氛围感满分的生活大片。</p>
+                <p>店内饮品和甜点性价比超高，招牌单品绝不踩雷！</p>
+                <p>☕ <strong>招牌手打拿铁</strong>：奶泡绵密细腻，咖啡醇厚不苦涩，甜度恰到好处，冷热两种口感都很惊艳，适配四季饮用。</p>
+                <p>🍰 <strong>手工芝士小蛋糕</strong>：每日现做新鲜出品，口感松软清甜，芝士香气浓郁，搭配咖啡是绝佳下午茶组合。</p>
+                <p>🍵 <strong>花果茶系列</strong>：无咖啡因配方，果香浓郁清爽，不甜腻，适合不爱喝咖啡的朋友，解腻又治愈。</p>
+                <p>为了给大家更好的体验，店铺支持线上预约！不管是单人放空、双人约会，还是小型闺蜜小聚，都可以提前预约，到店无需排队，优先安排窗边观景位、安静卡座，节假日高峰期预约尤为划算！</p>
+                <p>可预约服务：日常落座、下午茶套餐定制、小型休闲聚会包座、生日小场景简单布置</p>
+
+                <p>👇 <strong>点击下方按钮</strong>，即刻预约静静咖啡馆</p>
+                <button class="reserve-btn" id="reserveBtn">立即预约静静咖啡馆</button>
+
+                <p><strong>预约须知：</strong></p>
+                <p>1、预约免费无手续费，预约成功后当天预约时间内可保留30分钟，30分钟后未到自动取消；</p>
+                <p>2、如需定制下午茶、包座服务，预约后可联系店内工作人员对接细节；</p>
+                <p>3、每日预约名额有限，优先预约优先选座。</p>
+
+                <p>生活需要慢下来，不妨找一个闲暇午后，来静静咖啡馆，偷得浮生半日闲，让温柔的咖啡香气治愈所有琐碎与疲惫。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="#">入秋润燥养生食谱分享</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">老城菜市场秋季果蔬价格行情</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">小区秋冬绿化养护通知</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">4</div>
+                        <div class="rank-text"><a href="#">近郊秋日徒步路线推荐</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">5</div>
+                        <div class="rank-text"><a href="#">秋季家电防潮保养小技巧</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                    <li><a href="#">互助问答</a><span class="board-count">6109帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 右下角服务员弹窗 -->
+<div class="waiter-popup" id="waiterPop">
+    <p>静静咖啡馆服务员</p>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，人物、店铺均无现实对应实体</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机素材专用页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+24/34)
+</div>
+
+</body>
+
+<script>
+// 搜索相关元素
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const searchTip = document.getElementById('searchTip');
+const bodyDom = document.body;
+
+// 预约弹窗元素
+const reserveBtn = document.getElementById('reserveBtn');
+const waiterPop = document.getElementById('waiterPop');
+
+// 获取上丹市解锁状态
+function getUnlockState(){
+    return localStorage.getItem('unlock_shangdanshi') === 'true';
+}
+
+// 全屏红光闪烁
+function triggerFlash(){
+    bodyDom.classList.add('flash-warning');
+    setTimeout(()=>{
+        bodyDom.classList.remove('flash-warning');
+    }, 1200);
+}
+
+// 搜索逻辑
+function startSearch(){
+    const keyword = searchInput.value.trim();
+    if(keyword === "") return;
+
+    if(keyword.includes("弥娑")){
+        triggerFlash();
+        return;
+    }
+
+    if(keyword.includes("上丹市") && !getUnlockState()){
+        searchTip.style.display = 'block';
+        setTimeout(()=>{
+            searchTip.style.display = 'none';
+        }, 1500);
+        return;
+    }
+
+    location.href = "search.html?key=" + encodeURIComponent(keyword);
+}
+
+searchInput.addEventListener('input', function(){
+    const val = this.value.trim();
+    if(val.includes("弥娑")){
+        triggerFlash();
+    }
+    searchTip.style.display = 'none';
+})
+searchBtn.addEventListener('click', startSearch);
+searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter') startSearch();
+})
+
+// 预约逻辑
+reserveBtn.addEventListener('click', function(){
+    alert("预约成功！\n右下角客服窗口已开启，点击可与咖啡馆服务员沟通详情");
+    waiterPop.classList.add('popup-show');
+})
+waiterPop.addEventListener('click', function(){
+    window.location.href = "waiterMsg.html";
+})
+</script>
+</html>

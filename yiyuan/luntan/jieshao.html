@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石嘉论坛 - 【团体介绍】圣容会 本土善意公益组织完整概况</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 顶部公告 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+.search-box{display:flex;align-items:center;border:1px solid #666;background:#fff;}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+
+.user-quick{display:flex;gap:6px;align-items:center;}
+.quick-btn{
+    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
+}
+.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
+.quick-btn:hover{background:#fff2aa;}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 左侧新闻正文区域 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+    text-indent:2em;
+}
+.article-body p{
+    margin-bottom:16px;
+}
+.pic-block-top{
+    width:60%;
+    height:200px;
+    background:#cccccc;
+    border:1px solid #99b3d6;
+    margin:0 auto 20px auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#666;
+    font-size:13px;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.login-tip p{font-size:13px;color:#444;margin-bottom:15px;}
+.login-row{
+    margin-bottom:12px;
+}
+.login-row input{
+    width:100%;
+    height:34px;
+    border:1px solid #666;
+    padding:0 10px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+.login-submit{
+    width:100%;
+    height:36px;
+    background:#003380;
+    color:#fff;
+    border:1px solid #001a40;
+    cursor:pointer;
+    font-size:14px;
+    margin-bottom:10px;
+}
+.login-submit:hover{background:#ff7700;border-color:#cc5500;}
+.link-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input placeholder="搜索帖子、用户、关键词">
+            <button>搜索</button>
+        </div>
+        <div class="user-quick">
+            <a href="#" class="quick-btn btn-login">登录</a>
+            <a href="#" class="quick-btn btn-register">注册</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>【团体介绍】圣容教·本土善意公益组织完整概况</h1>
+            </div>
+            <div class="article-meta">
+                <span>发布来源：民生科普站</span>
+                <span>发布时间：2023-01-03 12:42</span>
+                <span>板块：城市分享 · 公益公告</span>
+                <span>浏览：1427</span>
+            </div>
+            <div class="article-body">
+                <div class="pic-block-top">
+                    <span>团体志愿活动实拍</span>
+                    <small>圣容会志愿者合影</small>
+                </div>
+
+                <p>圣容教于今日创立，由本地居民<strong>张宝钟</strong>发起组建，根据张宝钟所说，为何选择该日，是因为他多年长期照顾病重的妻子，在该日妻子的病居然痊愈了，特此代表他下定决心，要成立团体帮扶有心理痛苦的居民，以此纪念自己下定决心做公益的初心。</p>
+                <p>圣容教是在社区完成实名备案的民间公益互助团体，全程无收费项目，所有志愿人员信息均登记存档，接受社区与派出所共同监督管理。</p>
+                <p>团体主要开展两项公益工作。第一项是民生帮扶，组织志愿者上门照料独居孤寡老人，帮忙采购物资、整理居所，解决独居老人生活无人照料的难题。第二项为心理疏导，定期举办线下谈心交流会，接纳内心压抑的人倾诉烦恼，引导大家接纳苦难，放平心态，走出精神内耗。</p>
+                <p>圣容会始终坚守纯公益原则，不收取会费，不售卖课程，所有线下集会活动都会提前向社区报备。老城片区不少年轻人与中老年居民都参与过交流活动，在互相陪伴中抚平内心伤痛。</p>
+                <p>凡是被生活压力困住、内心郁郁难安的街坊邻里，都可以自愿参与线下交流。我们只谈宽慰人心的道理，只做邻里之间的互相帮扶，携手度过人生低谷。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>账号登录</h3>
+            <div class="card-body">
+                <div class="login-tip">
+                    <p>登录后可发帖、评论、收藏、私信好友</p>
+                </div>
+                <div class="login-row">
+                    <input placeholder="用户名">
+                </div>
+                <div class="login-row">
+                    <input type="password" placeholder="密码">
+                </div>
+                <button class="login-submit">立即登录</button>
+                <div class="link-row">
+                    <a href="#">忘记密码？</a>
+                    <a href="#">注册新账号</a>
+                </div>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="#">入秋润燥养生食谱分享</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">近郊秋日徒步路线推荐</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">老小区加装电梯流程说明</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">4</div>
+                        <div class="rank-text"><a href="#">秋季养生饮食指南</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">5</div>
+                        <div class="rank-text"><a href="#">社区便民超市盘点</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                    <li><a href="#">互助问答</a><span class="board-count">6109帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，人物、机构均无现实对应实体</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机素材专用页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(17/34)
+</div>
+</body>
+</html>

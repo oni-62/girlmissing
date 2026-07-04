@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上丹市短途旅游全攻略｜石嘉论坛</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 红光闪烁动画 */
+@keyframes flashRed {
+    0% { background-color: #e8ecf1; }
+    50% { background-color: #ff3333; }
+    100% { background-color: #e8ecf1; }
+}
+.flash-warning {
+    animation: flashRed 0.2s ease-in-out 6;
+}
+
+/* 顶部公告栏 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+/* 搜索框 */
+.search-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #666;
+    background:#fff;
+    position:relative;
+}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+.search-tip{
+    position:absolute;
+    top:36px;
+    left:0;
+    background:#ff4444;
+    color:#fff;
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:2px;
+    display:none;
+    white-space:nowrap;
+    z-index:10;
+}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 帖子正文模块 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+    text-indent:2em;
+}
+.article-body p{
+    margin-bottom:16px;
+}
+.article-body h2{
+    font-size:16px;
+    margin:24px 0 10px;
+    color:#003380;
+    text-indent:0;
+}
+.warn-text{
+    color:#c00;
+    font-weight:bold;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input id="searchInput" placeholder="搜索帖子、用户、关键词">
+            <span class="search-tip" id="searchTip"></span>
+            <button id="searchBtn">搜索</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>上丹市短途旅游全攻略｜近郊出行打卡景点、食宿全整理</h1>
+            </div>
+            <div class="article-meta">
+                <span>发帖板块：城市分享</span>
+                <span>发帖时间：2026-06-20 09:12</span>
+                <span>浏览：1489</span>
+                <span>回复：213</span>
+            </div>
+            <div class="article-body">
+                <p>整理一份适合两日短途出行的上丹市旅游攻略，城市节奏舒缓，老街氛围浓厚，适合散心、拍照休闲，周边山水风景出众，大部分景点无需高额门票，周末出行性价比很高。</p>
+
+                <h2>一、必打卡市内景点</h2>
+                <p>1.老城街巷片区：完整保留老式居民建筑，石板路两旁遍布小店，文创杂货、老式茶馆随处可见，拍照氛围感极强。文中提到的静静咖啡馆就在老城中段，逛累可以进去歇脚，支持线上预约座位。</p>
+                <p>2.湖滨公园：城市中心湖泊，环湖步道全程免费，傍晚湖面落日景色绝佳，园内设有休息长椅、小型文创商铺。</p>
+                <p>3.古寺街区：百年古寺坐落山脚，香火平和，周边配套素食简餐，适合喜欢安静慢游的游客。</p>
+
+                <h2>二、近郊景点（<strong>弥山</strong>区域）</h2>
+                <p class="warn-text">重要提醒：<strong>弥山</strong>深处早年发生过刑事案件，曾经长期封闭管控，虽几年前解封，本地人很少独自前往深山内部，短途游玩仅建议在山脚观景台活动，不要深入密林。</p>
+                <p>山脚观景台视野开阔，可俯瞰整座上丹市全景，步行二十分钟即可抵达，山路平缓，适合半日游。</p>
+
+                <h2>三、食宿推荐</h2>
+                <p>【咖啡甜品】静静咖啡馆：老城核心路段，环境安静，咖啡与手工蛋糕口碑稳定，支持提前预约座位，多人小聚可定制下午茶套餐。</p>
+                <p>【本地正餐】老城家常菜馆，主打本地山野风味，人均消费三十左右，分量充足。</p>
+                <p>【住宿】老城平价民宿，多为独栋小院，出行便利，节假日建议提前一周预订。</p>
+
+                <h2>四、两日短途出行路线参考</h2>
+                <p>D1：老城街巷闲逛 → 静静咖啡馆休息打卡 → 湖滨公园看日落</p>
+                <p>D2：古寺街区参观 → 后山山脚观景台 → 返程</p>
+
+                <h2>五、出行小贴士</h2>
+                <p>1.上丹市昼夜温差偏大，即使夏季出行也建议携带薄外套；</p>
+                <p>2.后山密林信号较差，尽量结伴而行，不单独深入未开发山道；</p>
+                <p>3.老城商铺大多傍晚八点左右歇业，游玩尽量安排白天；</p>
+                <p>4.前往咖啡馆预约可线上登记，到店免排队，预约后会有店内客服对接需求。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="travel.html">上丹市短途旅游全攻略</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">入夏避蚊虫小方法</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">静静咖啡馆探店推荐</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，城市、店铺、事件均为虚构，无现实对应实体</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机素材专用页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(30/34)
+</div>
+</body>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const searchTip = document.getElementById('searchTip');
+const bodyDom = document.body;
+
+// 全屏红光闪烁（仅弥娑触发）
+function triggerFlash(){
+    bodyDom.classList.add('flash-warning');
+    setTimeout(()=>{
+        bodyDom.classList.remove('flash-warning');
+    }, 1200);
+}
+
+// 搜索逻辑：删除上丹市解锁判断，直接放行
+function startSearch(){
+    const keyword = searchInput.value.trim();
+    if(keyword === "") return;
+
+    // 仅拦截弥娑，其余关键词正常搜索
+    if(keyword.includes("弥娑")){
+        triggerFlash();
+        return;
+    }
+
+    location.href = "search.html?key=" + encodeURIComponent(keyword);
+}
+
+searchInput.addEventListener('input', function(){
+    const val = this.value.trim();
+    if(val.includes("弥娑")) triggerFlash();
+    searchTip.style.display = 'none';
+})
+searchBtn.addEventListener('click', startSearch);
+searchInput.addEventListener('keydown', e=>{
+    if(e.key === 'Enter') startSearch();
+})
+</script>
+</html>

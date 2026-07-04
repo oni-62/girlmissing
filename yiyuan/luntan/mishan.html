@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弥山传闻｜雾岫登仙案旧事闲谈｜石嘉论坛</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 红光闪烁动画 */
+@keyframes flashRed {
+    0% { background-color: #e8ecf1; }
+    50% { background-color: #ff3333; }
+    100% { background-color: #e8ecf1; }
+}
+.flash-warning {
+    animation: flashRed 0.2s ease-in-out 6;
+}
+
+/* 顶部公告栏 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+/* 搜索框 */
+.search-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #666;
+    background:#fff;
+    position:relative;
+}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+.search-tip{
+    position:absolute;
+    top:36px;
+    left:0;
+    background:#ff4444;
+    color:#fff;
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:2px;
+    display:none;
+    white-space:nowrap;
+    z-index:10;
+}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 帖子正文模块 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+    text-indent:2em;
+}
+.article-body p{
+    margin-bottom:16px;
+}
+.article-body h2{
+    font-size:16px;
+    margin:24px 0 10px;
+    color:#003380;
+    text-indent:0;
+}
+.warn-text{
+    color:#c00;
+    font-weight:bold;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input id="searchInput" placeholder="搜索帖子、用户、关键词">
+            <span class="search-tip" id="searchTip"></span>
+            <button id="searchBtn">搜索</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>闲谈弥山｜弥山暮老成仙案过往传闻，本地人极少深入</h1>
+            </div>
+            <div class="article-meta">
+                <span>发帖板块：城市分享</span>
+                <span>发帖时间：2026-06-22 22:05</span>
+                <span>浏览：756</span>
+                <span>回复：92</span>
+            </div>
+            <div class="article-body">
+                <p>常逛上丹老城的人应该都听过弥山的名号，它就是旅游攻略里提到的后山整片山脉。整座山体常年被厚重白雾笼罩，山深处林间雾气终年不散，外人看着仙气缭绕，本地居民却大多避之不及。</p>
+
+                <h2>一、传闻：弥山暮老成仙案</h2>
+                <p>2023年这里发生过一起失踪事件，对外流传的说法是之前有一个叫<strong>沈砚舟</strong>的老人进入弥山后，就再也找不到老人的身影了，老人生前没有生子，仅有一名养子在世。养子称，老人走时为一百岁高龄，身子骨健朗，之后会做成喜丧之事看待。因此这件旧事被当地人称作<span class="warn-text">弥山暮老成仙案</span>。</p>
+                <p>当年事发之后弥山全域长期封禁，禁止任何人进山。之后几个月管控放松、山路解封，但只开放山脚一小片观景平台，密林深处依旧不允许私自闯入。</p>
+
+                <h2>二、山中诡异现象</h2>
+                <p>不少去过山脚观景台的游客反馈，傍晚时分山中雾气会快速聚拢，隔着云雾偶尔能看见模糊人影在林间走动，呼喊不会得到回应，转眼就彻底消失在白雾里。山中手机信号时断时续，越往深处走越容易完全失联。</p>
+
+                <h2>三、出行安全提醒</h2>
+                <p class="warn-text">1、仅可在山脚观景区域活动，严禁私自翻越护栏深入山林，私自进山一旦失联很难搜救。</p>
+                <p class="warn-text">2、尽量结伴白天前往，黄昏雾气升起后立刻下山，不要在山边逗留至天黑。</p>
+                <p>3、老城静静咖啡馆的店员偶尔会提起弥山旧事，有想了解更多当年预约名单线索的，可以进店预约后和服务员私聊询问细节。</p>
+
+                <h2>四、个人看法</h2>
+                <p>所谓登仙只是掩盖失踪惨案的说法，弥山密林地形复杂、雾气常年遮蔽视线，极易迷路。虽然传闻充满玄幻色彩，但背后是无数家庭的遗憾，不建议大家为了猎奇独自冒险深入山中。如果只是想看上丹全景，山脚观景台已经足够。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="travel.html">上丹市短途旅游全攻略</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="cafe.html">静静咖啡馆探店推荐</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="mishan.html">闲谈弥山｜雾岫登仙案过往传闻</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8152帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，山脉、案件均为虚构，无现实对应实体</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机剧情素材页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(31/34)
+</div>
+</body>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const searchTip = document.getElementById('searchTip');
+const bodyDom = document.body;
+
+// 弥娑触发全屏红光闪烁
+function triggerFlash(){
+    bodyDom.classList.add('flash-warning');
+    setTimeout(()=>{
+        bodyDom.classList.remove('flash-warning');
+    }, 1200);
+}
+
+// 搜索逻辑：所有关键词统一跳转search.html
+function startSearch(){
+    const keyword = searchInput.value.trim();
+    if(keyword === "") return;
+
+    if(keyword.includes("弥娑")){
+        triggerFlash();
+        return;
+    }
+
+    location.href = "search.html?key=" + encodeURIComponent(keyword);
+}
+
+searchInput.addEventListener('input', function(){
+    const val = this.value.trim();
+    if(val.includes("弥娑")) triggerFlash();
+    searchTip.style.display = 'none';
+})
+searchBtn.addEventListener('click', startSearch);
+searchInput.addEventListener('keydown', e=>{
+    if(e.key === 'Enter') startSearch();
+})
+</script>
+</html>

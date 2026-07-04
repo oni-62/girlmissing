@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石嘉论坛 - 邹涛就任城区派出所局长公告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun","Microsoft YaHei",Tahoma,sans-serif;}
+body{background:#e8ecf1;color:#000;min-height:100vh;display:flex;flex-direction:column;line-height:1.6;font-size:14px;}
+a{text-decoration:none;color:#003399;}
+a:hover{color:#ff6600;text-decoration:underline;}
+ul,li{list-style:none;}
+
+/* 顶部公告 */
+.top-notice{
+    width:100%;
+    height:26px;
+    background:#fff2aa;
+    border-bottom:1px solid #cc9900;
+    font-size:12px;
+    color:#990000;
+    line-height:26px;
+}
+.notice-wrap{
+    width:980px;
+    margin:0 auto;
+}
+
+/* 头部导航 */
+.top-header{width:100%;height:72px;background:#003380;border-bottom:2px solid #001a40;}
+.header-wrap{width:980px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.logo{font-size:30px;color:#fff;font-weight:bold;letter-spacing:2px;font-family:"SimHei";}
+.logo span{font-size:12px;opacity:0.8;margin-left:10px;color:#ffdd77;}
+
+.nav{display:flex;gap:2px;background:#002866;padding:4px;border:1px solid #0044aa;}
+.nav a{
+    display:block;color:#fff;font-size:14px;padding:8px 16px;line-height:22px;background:#003399;
+    border:1px solid #0055cc;
+}
+.nav a:hover{background:#ff8800;color:#fff;text-decoration:none;border:1px solid #ffaa33;}
+
+.search-box{display:flex;align-items:center;border:1px solid #666;background:#fff;}
+.search-box input{
+    width:220px;height:32px;border:none;padding:0 10px;outline:none;font-size:14px;background:#fff;
+}
+.search-box button{
+    height:32px;background:#003399;border:none;color:#fff;padding:0 12px;cursor:pointer;font-size:13px;border-left:1px solid #999;
+}
+.search-box button:hover{background:#ff7700;}
+
+.user-quick{display:flex;gap:6px;align-items:center;}
+.quick-btn{
+    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
+}
+.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
+.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
+.quick-btn:hover{background:#fff2aa;}
+
+.main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
+
+/* 左侧新闻正文区域 */
+.left-bbs{width:740px;}
+.article-box{
+    background:#fff;
+    border:1px solid #99b3d6;
+}
+.article-head{
+    background:#003380;
+    padding:14px 20px;
+}
+.article-head h1{
+    font-size:18px;
+    color:#fff;
+    font-family:"SimHei";
+}
+.article-meta{
+    padding:12px 20px;
+    border-bottom:1px dashed #cce0ff;
+    font-size:13px;
+    color:#666;
+    display:flex;
+    gap:20px;
+}
+.article-body{
+    padding:25px 20px;
+    font-size:15px;
+    line-height:1.8;
+    text-indent:2em;
+}
+.article-body p{
+    margin-bottom:16px;
+}
+/* 图片容器：仅包裹图片，文字在外，取消overflow裁切 */
+.pic-block-top{
+    width:60%;
+    height:200px;
+    border:1px solid #99b3d6;
+    margin:0 auto;
+}
+.pic-block-top img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.pic-desc{
+    font-size:12px;
+    color:#555;
+    text-align:center;
+    margin:8px 0 20px;
+}
+
+/* 右侧边栏 */
+.right-side{width:222px;display:flex;flex-direction:column;gap:16px;}
+.side-card{background:#fff;border:1px solid #99b3d6;border-radius:0;}
+.side-card h3{
+    padding:10px 14px;background:#003380;font-size:15px;color:#fff;border-bottom:1px solid #001a40;font-family:"SimHei";
+}
+.card-body{padding:14px;}
+
+.login-tip p{font-size:13px;color:#444;margin-bottom:15px;}
+.login-row{
+    margin-bottom:12px;
+}
+.login-row input{
+    width:100%;
+    height:34px;
+    border:1px solid #666;
+    padding:0 10px;
+    outline:none;
+    font-size:14px;
+    background:#fff;
+}
+.login-submit{
+    width:100%;
+    height:36px;
+    background:#003380;
+    color:#fff;
+    border:1px solid #001a40;
+    cursor:pointer;
+    font-size:14px;
+    margin-bottom:10px;
+}
+.login-submit:hover{background:#ff7700;border-color:#cc5500;}
+.link-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+.rank-list li{padding:8px 0;border-bottom:1px dotted #cce0ff;display:flex;gap:8px;align-items:center;}
+.rank-list li:last-child{border:none;}
+.num{
+    width:20px;height:20px;text-align:center;line-height:20px;font-size:12px;border:1px solid #999;border-radius:0;
+}
+.num.one{background:#cc0000;color:#fff;}
+.num.two{background:#ff6600;color:#fff;}
+.num.three{background:#ffcc00;color:#000;}
+.num.other{background:#eee;color:#666;}
+
+.board-list li{padding:7px 0;display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted #eee;}
+.board-list li:last-child{border:none;}
+.board-count{color:#666;font-size:12px;}
+
+/* 底部页脚 */
+.footer{
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
+}
+.footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
+.footer-left p{font-size:12px;line-height:1.8;}
+.footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
+.footer-right a:last-child{border-right:none;}
+.copyright{
+    width:980px;margin:16px auto 0;text-align:center;padding-top:16px;border-top:1px solid #003388;font-size:11px;color:#99b3d6;
+}
+</style>
+</head>
+<body>
+<div class="top-notice">
+    <div class="notice-wrap">
+        ⚠️ 本站内容均为游戏虚构社区新闻，仅用于单机剧情制作
+    </div>
+</div>
+
+<div class="top-header">
+    <div class="header-wrap">
+        <div class="logo">石嘉论坛 <span>bbs.qiriweb.cn</span></div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="#">生活杂谈</a>
+            <a href="#">城市分享</a>
+            <a href="#">心情随笔</a>
+            <a href="#">互助问答</a>
+        </div>
+        <div class="search-box">
+            <input placeholder="搜索帖子、用户、关键词">
+            <button>搜索</button>
+        </div>
+        <div class="user-quick">
+            <a href="#" class="quick-btn btn-login">登录</a>
+            <a href="#" class="quick-btn btn-register">注册</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrap">
+    <div class="left-bbs">
+        <div class="article-box">
+            <div class="article-head">
+                <h1>人事任免｜邹涛正式就任城区派出所所长一职</h1>
+            </div>
+            <div class="article-meta">
+                <span>发布来源：城市民生资讯站</span>
+                <span>发布时间：2023-04-29 14:45</span>
+                <span>板块：城市分享 · 政务公告</span>
+                <span>浏览：1156</span>
+            </div>
+            <div class="article-body">
+                <div class="pic-block-top">
+                    <img src="tupian/zt.png" alt="现场照片">
+                </div>
+                <div class="pic-desc">邹涛进行演讲宣誓</div>
+
+                <p>近日城区公安系统人事调整公示完毕，原分管社区警务的邹涛正式升任城区派出所所长，全面主持所内治安防控、辖区管理、警民协同全部工作。</p>
+                <p>本次岗位变动源于上一任老所长身体抱恙，久病医治无效不幸离世，所内管理一把手岗位出现空缺。上级公安部门结合多年工作资历、基层服务实绩、群众口碑多方综合考核，最终选定邹涛接任所长局长职务。</p>
+                <p>邹涛多年深耕基层社区警务，长期定点对接老城整片老旧片区，平日里一直和圣容会这一本土公益团体维持稳定警民共建合作。之前工作中，由他牵头落实邻里矛盾调解、独居老人夜间安全巡护、辖区风险隐患排查等多项民生实事，对老城居民的生活难处十分熟悉。</p>
+                <p>上任当天邹涛对外表态，一定会延续老所长生前一手搭建起来的成熟警民帮扶体系。一方面牢牢守住治安执法、日常巡逻、纠纷处置的警务本职；另一方面持续加深与圣容会的联动配合，公安负责安全秩序管控，公益团体承接心理疏导、居家生活照料，两者互补配合，完成老局长生前没有做完的长期民生帮扶规划。</p>
+                <p>不少辖区居民、圣容会志愿者纷纷留言表示，邹涛办事踏实稳重，对待普通群众温和耐心，常年扎根一线办事靠谱，这次升任局长大家都十分认可，希望能够延续以往暖心务实的治理风格，让辖区治安和民生帮扶再上一层台阶。</p>
+                <p>据悉派出所近期会召开全体民警工作部署大会，细化下半年夜间巡逻排班、社区安全普法宣讲、困难群众警民联合帮扶等一系列工作计划。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="side-card">
+            <h3>账号登录</h3>
+            <div class="card-body">
+                <div class="login-tip">
+                    <p>登录后可发帖、评论、收藏、私信好友</p>
+                </div>
+                <div class="login-row">
+                    <input placeholder="用户名">
+                </div>
+                <div class="login-row">
+                    <input type="password" placeholder="密码">
+                </div>
+                <button class="login-submit">立即登录</button>
+                <div class="link-row">
+                    <a href="#">忘记密码？</a>
+                    <a href="#">注册新账号</a>
+                </div>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>热门资讯排行</h3>
+            <div class="card-body">
+                <ul class="rank-list">
+                    <li>
+                        <div class="num one">1</div>
+                        <div class="rank-text"><a href="#">入秋润燥养生食谱分享</a></div>
+                    </li>
+                    <li>
+                        <div class="num two">2</div>
+                        <div class="rank-text"><a href="#">老城菜市场秋季果蔬价格行情</a></div>
+                    </li>
+                    <li>
+                        <div class="num three">3</div>
+                        <div class="rank-text"><a href="#">小区秋冬绿化养护通知</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">4</div>
+                        <div class="rank-text"><a href="#">近郊秋日徒步路线推荐</a></div>
+                    </li>
+                    <li>
+                        <div class="num other">5</div>
+                        <div class="rank-text"><a href="#">秋季家电防潮保养小技巧</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="side-card">
+            <h3>全部交流板块</h3>
+            <div class="card-body">
+                <ul class="board-list">
+                    <li><a href="#">生活杂谈</a><span class="board-count">12684帖</span></li>
+                    <li><a href="#">城市分享</a><span class="board-count">8921帖</span></li>
+                    <li><a href="#">心情随笔</a><span class="board-count">7536帖</span></li>
+                    <li><a href="#">互助问答</a><span class="board-count">6109帖</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-wrap">
+        <div class="footer-left">
+            <p>石嘉论坛 bbs.qiriweb.cn</p>
+            <p>声明：全文为游戏虚构剧情素材，人物、机构均无现实对应实体</p>
+        </div>
+        <div class="footer-right">
+            <a href="#">关于我们</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">举报违规</a>
+            <a href="#">联系站长</a>
+        </div>
+    </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 游戏单机素材专用页面
+    </div>
+<div style="position:fixed; right:25px; bottom:20px; font-size:14px; color:#fff;">
+(18/34)
+</div>
+
+</body>
+</html>

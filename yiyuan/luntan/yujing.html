@@ -97,15 +97,15 @@ ul,li{list-style:none;}
     float:right;
     width:260px;
     height:190px;
-    background:#cccccc;
     border:1px solid #99b3d6;
     margin:0 0 12px 18px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    color:#666;
-    font-size:13px;
+    overflow: hidden;
+}
+.pic-float-right img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
 }
 
 /* 右侧边栏 */
@@ -177,8 +177,8 @@ ul,li{list-style:none;}
             <a href="#">互助问答</a>
         </div>
         <div class="search-box">
-            <input placeholder="搜索帖子、用户、关键词">
-            <button>搜索</button>
+            <input id="searchInput" placeholder="搜索帖子、用户、关键词">
+            <button id="searchBtn">搜索</button>
         </div>
         <div class="user-quick">
             <a href="#" class="quick-btn btn-login">登录</a>
@@ -200,10 +200,10 @@ ul,li{list-style:none;}
                 <span>浏览：1289</span>
             </div>
             <div class="article-body">
-                <!-- 浮动占位图片，文字自动环绕 -->
+                <!-- 本地图片区域，修改src为你的图片路径 -->
                 <div class="pic-float-right">
-                    <span>活动现场实拍占位图</span>
-                    <small>圣容会公益活动现场</small>
+                    <!-- 替换这里的src为你本地图片路径 -->
+                    <img src="tupian/yujing.png" alt="圣容会公益活动现场">
                 </div>
                 <p>近日，我市本土民间新兴团体“圣容会”正式启动二月份常态化社区帮扶计划，本次活动覆盖城东老居民区、城西安置小区、城南老旧平房三大片区，共计组织二十名登记志愿者分组开展上门志愿服务，以善意之行温暖邻里社区。</p>
                 <p>本次帮扶分为物资派送、居家照料、心灵疏导三大板块。圣容会志愿者提前摸排片区内独居高龄老人、身患慢性病行动不便住户、低收入单亲家庭等困难群体名单，统一采购米面粮油、常用洗护、防暑药品等生活物资逐户配送。针对无人照料的老人，志愿者定时上门帮忙打扫房间、采购菜品、代缴水电费用，解决日常生活琐事难题。</p>

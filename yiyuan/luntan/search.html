@@ -271,14 +271,12 @@ ul,li{list-style:none;}
             <div class="result-block-head">关键词「上丹市」匹配相关帖子（共1条）</div>
             <div class="result-list">
                 <div class="post-item">
-                    <div class="post-content">
-                        <div class="post-title"><a href="travel.html">上丹市短途旅游全攻略｜近郊出行打卡景点、食宿全整理</a></div>
-                        <div class="post-excerpt">两日短途出行攻略，老城、后山、静静咖啡馆打卡指南，附带后山旧案安全提醒。</div>
-                        <div class="post-bottom">
-                            <span>城市游记博主</span>
-                            <span>2026-06-20 09:12</span>
-                            <span class="post-tag">城市分享</span>
-                        </div>
+                    <div class="post-title"><a href="travel.html">上丹市短途旅游全攻略｜近郊出行打卡景点、食宿全整理</a></div>
+                    <div class="post-excerpt">两日短途出行攻略，老城、后山、静静咖啡馆打卡指南，附带后山旧案安全提醒。</div>
+                    <div class="post-bottom">
+                        <span>城市游记博主</span>
+                        <span>2026-06-20 09:12</span>
+                        <span class="post-tag">城市分享</span>
                     </div>
                     <div class="post-stat"><span>1489</span>浏览 213回复</div>
                 </div>
@@ -331,6 +329,25 @@ ul,li{list-style:none;}
             </div>
         </div>
 
+        <!-- 张芝月 新增区块 -->
+        <div id="list-zhiyue" class="result-wrap hide">
+            <div class="result-block-head">关键词「张芝月」匹配相关帖子（共1条）</div>
+            <div class="result-list">
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="zzy.html">账号主：云间芝月</a></div>
+                        <div class="post-excerpt">日常随笔记录，分享老城生活点滴与邻里故事。</div>
+                        <div class="post-bottom">
+                            <span>张芝月</span>
+                            <span>2025-08-10 19:20</span>
+                            <span class="post-tag">心情随笔</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>786</span>浏览 62回复</div>
+                </div>
+            </div>
+        </div>
+
         <!-- 无结果提示 -->
         <div id="tip-empty" class="empty-tip hide">未查询到匹配的帖子内容</div>
     </div>
@@ -373,7 +390,7 @@ let key = url.searchParams.get("key");
 document.querySelectorAll('.result-wrap').forEach(item=>item.classList.add('hide'));
 document.getElementById('tip-empty').classList.add('hide');
 
-//判断关键词匹配逻辑，新增沈砚舟分支
+//判断关键词匹配逻辑，新增张芝月分支
 if(key === "盲区事务所"){
     document.getElementById('list-blind').classList.remove('hide');
 }else if(key === "圣容教" || key === "圣容会"){
@@ -392,6 +409,8 @@ if(key === "盲区事务所"){
     document.getElementById('list-mishan').classList.remove('hide');
 }else if(key === "沈砚舟"){
     document.getElementById('list-shenyanzhou').classList.remove('hide');
+}else if(key === "张芝月"){
+    document.getElementById('list-zhiyue').classList.remove('hide');
 }else{
     document.getElementById('tip-empty').classList.remove('hide');
 }

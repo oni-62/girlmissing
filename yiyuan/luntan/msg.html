@@ -216,8 +216,7 @@ ul,li{list-style:none;}
 
 /* 底部页脚 */
 .footer{
-    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
-}
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;}
 .footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
 .footer-left p{font-size:12px;line-height:1.8;}
 .footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
@@ -350,7 +349,7 @@ const searchForm = document.getElementById('searchForm');
 // 本地存储key统一命名
 const STORAGE_MSG_LIST = "bbs_chat_msg_list";
 const STORAGE_LINE_INDEX = "bbs_chat_line_index";
-const STORAGE_UNLOCK = "unlock_shangdanshi";
+const STORAGE_UNLOCK = "unlock_msg";
 
 // 本地存储工具封装
 function getMsgList(){
@@ -497,7 +496,7 @@ sendBtn.onclick = function(){
 
 // 回车快捷发送
 msgInput.onkeydown = function(e){
-    if(e.key === "Enter" && !e.shiftKey){
+    if(e.key === 'Enter' && !e.shiftKey){
         e.preventDefault();
         sendBtn.click();
     }
@@ -522,4 +521,4 @@ searchForm.addEventListener('submit',function(e){
     }
 })
 </script>
-</html>  
+</html>

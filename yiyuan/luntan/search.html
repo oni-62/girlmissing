@@ -43,13 +43,6 @@ ul,li{list-style:none;}
 }
 .search-box button:hover{background:#ff7700;}
 
-.user-quick{display:flex;gap:6px;align-items:center;}
-.quick-btn{
-    display:block;padding:6px 14px;border:1px solid #666;font-size:14px;background:#f0f0f0;color:#000;
-}
-.btn-register{background:#ff7700;color:#fff;border:1px solid #cc5500;}
-.btn-login{background:#e0edff;color:#003399;border:1px solid #6699cc;}
-
 .main-wrap{width:980px;margin:24px auto;display:flex;gap:18px;flex:1;}
 .left-bbs{width:740px;}
 
@@ -103,8 +96,7 @@ ul,li{list-style:none;}
 .board-count{color:#666;font-size:12px;}
 
 .footer{
-    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;
-}
+    width:100%;background:#002255;color:#cce0ff;padding:24px 0;margin-top:auto;border-top:2px solid #004099;}
 .footer-wrap{width:980px;margin:0 auto;display:flex;justify-content:space-between;}
 .footer-left p{font-size:12px;line-height:1.8;}
 .footer-right a{color:#cce0ff;font-size:12px;margin-left:12px;border-right:1px solid #6688bb;padding-right:12px;}
@@ -137,10 +129,6 @@ ul,li{list-style:none;}
         <div class="search-box">
             <input id="searchInput" placeholder="搜索帖子、用户、关键词">
             <button id="searchBtn">搜索</button>
-        </div>
-        <div class="user-quick">
-            <a href="#" class="quick-btn btn-login">登录</a>
-            <a href="#" class="quick-btn btn-register">注册</a>
         </div>
     </div>
 </div>
@@ -195,14 +183,12 @@ ul,li{list-style:none;}
                     <div class="post-stat"><span>1289</span>浏览 87回复</div>
                 </div>
                 <div class="post-item">
-                    <div class="post-content">
-                        <div class="post-title"><a href="jieshao.html">【团体介绍】圣容会 本土善意公益组织完整概况</a></div>
-                        <div class="post-excerpt">圣容会2023年1月1日由张宝钟发起，纯公益无收费。</div>
-                        <div class="post-bottom">
-                            <span>民生科普站</span>
-                            <span>2023-01-03 12:42</span>
-                            <span class="post-tag">城市分享</span>
-                        </div>
+                    <div class="post-title"><a href="jieshao.html">【团体介绍】圣容会 本土善意公益组织完整概况</a></div>
+                    <div class="post-excerpt">圣容会2023年1月1日由张宝钟发起，纯公益无收费。</div>
+                    <div class="post-bottom">
+                        <span>民生科普站</span>
+                        <span>2023-01-03 12:42</span>
+                        <span class="post-tag">城市分享</span>
                     </div>
                     <div class="post-stat"><span>1427</span>浏览 103回复</div>
                 </div>
@@ -271,12 +257,14 @@ ul,li{list-style:none;}
             <div class="result-block-head">关键词「上丹市」匹配相关帖子（共1条）</div>
             <div class="result-list">
                 <div class="post-item">
-                    <div class="post-title"><a href="shangdanshi.html">上丹市短途旅游全攻略｜近郊出行打卡景点、食宿全整理</a></div>
-                    <div class="post-excerpt">两日短途出行攻略，老城、后山、静静咖啡馆打卡指南，附带后山旧案安全提醒。</div>
-                    <div class="post-bottom">
-                        <span>城市游记博主</span>
-                        <span>2026-06-20 09:12</span>
-                        <span class="post-tag">城市分享</span>
+                    <div class="post-content">
+                        <div class="post-title"><a href="shangdanshi.html">上丹市短途旅游全攻略｜近郊出行打卡景点、食宿全整理</a></div>
+                        <div class="post-excerpt">两日短途出行攻略，老城、后山、静静咖啡馆打卡指南，附带后山旧案安全提醒。</div>
+                        <div class="post-bottom">
+                            <span>城市游记博主</span>
+                            <span>2026-06-20 09:12</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
                     </div>
                     <div class="post-stat"><span>1489</span>浏览 213回复</div>
                 </div>
@@ -304,9 +292,20 @@ ul,li{list-style:none;}
 
         <!-- 弥山 -->
         <div id="list-mishan" class="result-wrap hide">
-            <div class="result-block-head">关键词「弥山」匹配相关帖子（共0条）</div>
+            <div class="result-block-head">关键词「弥山」匹配相关帖子（共1条）</div>
             <div class="result-list">
-                <div class="empty-tip">暂未发布弥山相关公开帖子，相关线索可结合上丹市后山传闻查看</div>
+                <div class="post-item">
+                    <div class="post-content">
+                        <div class="post-title"><a href="mishan.html">弥山近郊观光步道游玩指南与安全提醒</a></div>
+                        <div class="post-excerpt">弥山近郊日间观光步道游玩攻略，禁止深夜进山与进入废弃石龛。</div>
+                        <div class="post-bottom">
+                            <span>本地资讯</span>
+                            <span>2026-06-21 10:00</span>
+                            <span class="post-tag">城市分享</span>
+                        </div>
+                    </div>
+                    <div class="post-stat"><span>997</span>浏览 86回复</div>
+                </div>
             </div>
         </div>
 
@@ -335,7 +334,7 @@ ul,li{list-style:none;}
             <div class="result-list">
                 <div class="post-item">
                     <div class="post-content">
-                        <div class="post-title"><a href="zzy.html">账号主：云间芝月</a></div>
+                        <div class="post-title"><a href="zzy.html">【日常随笔】张芝月的生活记录贴</a></div>
                         <div class="post-excerpt">日常随笔记录，分享老城生活点滴与邻里故事。</div>
                         <div class="post-bottom">
                             <span>张芝月</span>
@@ -349,7 +348,7 @@ ul,li{list-style:none;}
         </div>
 
         <!-- 无结果提示 -->
-        <div id="tip-empty" class="empty-tip hide">未查询到匹配的帖子内容</div>
+        <div id="tip-empty" class="empty-tip hide"></div>
     </div>
 
     <div class="right-side">
@@ -365,7 +364,7 @@ ul,li{list-style:none;}
             <h3>今日热帖排行</h3>
             <div class="card-body">
                 <ul class="rank-list">
-                    <li><div class="num one">1</div><div class="rank-text"><a href="travel.html">上丹市短途旅游全攻略</a></div></li>
+                    <li><div class="num one">1</div><div class="rank-text"><a href="shangdanshi.html">上丹市短途旅游全攻略</a></div></li>
                     <li><div class="num two">2</div><div class="rank-text"><a href="coffee.html">【探店推荐】静静咖啡馆</a></div></li>
                 </ul>
             </div>
@@ -379,18 +378,26 @@ ul,li{list-style:none;}
             <p>石嘉论坛 bbs.qiriweb.cn</p>
         </div>
     </div>
+    <div class="copyright">
+        ©2026 石嘉论坛 虚构游戏剧情素材
+    </div>
 </div>
 
 <script>
 //读取网址参数
 let url = new URL(location.href);
 let key = url.searchParams.get("key");
+let unlock = url.searchParams.get("unlock");
+const lockKeywords = ["上丹市", "弥山"];
+let isLockKeyword = lockKeywords.includes(key);
+let globalUnlocked = localStorage.getItem('unlock_msg') === 'true';
 
 //全部先隐藏
 document.querySelectorAll('.result-wrap').forEach(item=>item.classList.add('hide'));
 document.getElementById('tip-empty').classList.add('hide');
+document.getElementById('tip-empty').innerText = "";
 
-//判断关键词匹配逻辑，新增张芝月分支
+//判断关键词匹配逻辑
 if(key === "盲区事务所"){
     document.getElementById('list-blind').classList.remove('hide');
 }else if(key === "圣容教" || key === "圣容会"){
@@ -402,17 +409,28 @@ if(key === "盲区事务所"){
 }else if(key === "邹涛"){
     document.getElementById('list-zoutao').classList.remove('hide');
 }else if(key === "上丹市"){
-    document.getElementById('list-shangdan').classList.remove('hide');
+    if(unlock === "1" && globalUnlocked){
+        document.getElementById('list-shangdan').classList.remove('hide');
+    }else{
+        document.getElementById('tip-empty').classList.remove('hide');
+        document.getElementById('tip-empty').innerText = "还不可查询相关内容";
+    }
 }else if(key === "静静咖啡馆"){
     document.getElementById('list-cafe').classList.remove('hide');
 }else if(key === "弥山"){
-    document.getElementById('list-mishan').classList.remove('hide');
+    if(unlock === "1" && globalUnlocked){
+        document.getElementById('list-mishan').classList.remove('hide');
+    }else{
+        document.getElementById('tip-empty').classList.remove('hide');
+        document.getElementById('tip-empty').innerText = "还不可查询相关内容";
+    }
 }else if(key === "沈砚舟"){
     document.getElementById('list-shenyanzhou').classList.remove('hide');
 }else if(key === "张芝月"){
     document.getElementById('list-zhiyue').classList.remove('hide');
 }else{
     document.getElementById('tip-empty').classList.remove('hide');
+    document.getElementById('tip-empty').innerText = "未查询到匹配的帖子内容";
 }
 
 //本页搜索框继续可用
@@ -420,7 +438,16 @@ const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 searchBtn.onclick = function(){
     let kw = searchInput.value.trim();
-    location.href = "search.html?key=" + encodeURIComponent(kw);
+    const isUnlocked = localStorage.getItem('unlock_msg') === 'true';
+    if(lockKeywords.includes(kw)){
+        if(isUnlocked){
+            location.href = "search.html?key=" + encodeURIComponent(kw) + "&unlock=1";
+        }else{
+            location.href = "search.html?key=" + encodeURIComponent(kw) + "&unlock=0";
+        }
+    }else{
+        location.href = "search.html?key=" + encodeURIComponent(kw);
+    }
 }
 searchInput.onkeydown = e=>{
     if(e.key === 'Enter') searchBtn.click();
